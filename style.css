@@ -79,16 +79,24 @@
 
 
 #Inventaire{
-    padding: 5px 5px;
-    color: white;
+    padding: 30px 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    
     border: 2px black solid;
     border-radius: 3px;
     background-color: brown;
+    background-image: url(../EscapeGame-master/images/inventaire.png);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
     align-self: flex-start;
 }
+
+
 #Inventaire:hover,
 #Inventaire:focus{
     color: white;
+    background-image: url(../EscapeGame-master/images/inventaire_focus.png);
     background-color: rgb(100, 20, 0);
     box-shadow: 0 1px 0 rgba(255,255,255,.1),
                 0 0 1px 1px rgba(255,255,255,.3) inset,
