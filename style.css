@@ -49,7 +49,7 @@
 }
 
 .CorpsAccueil{
-    background-color: grey;
+    background-color: rgba(185, 185, 200, 0.3);
     border: 5px darkgrey solid;
     border-radius: 8px;
 }
@@ -86,7 +86,7 @@
     border: 2px black solid;
     border-radius: 3px;
     background-color: brown;
-    background-image: url(../EscapeGame-master/images/inventaire.png);
+    background-image: url(../images/inventaire.png);
     background-repeat:no-repeat;
     background-size:100% 100%;
     align-self: flex-start;
@@ -96,7 +96,7 @@
 #Inventaire:hover,
 #Inventaire:focus{
     color: white;
-    background-image: url(../EscapeGame-master/images/inventaire_focus.png);
+    background-image: url(../images/inventaire_focus.png);
     background-color: rgb(100, 20, 0);
     box-shadow: 0 1px 0 rgba(255,255,255,.1),
                 0 0 1px 1px rgba(255,255,255,.3) inset,
