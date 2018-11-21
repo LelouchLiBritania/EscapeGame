@@ -77,8 +77,15 @@
 
 }
 
-
 #Inventaire{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+#bouttonInventaire{
     padding: 30px 15px;
     color: rgb(0, 0, 0);
     font-weight: bold;
@@ -88,13 +95,13 @@
     background-color: brown;
     background-image: url(../images/inventaire.png);
     background-repeat:no-repeat;
-    background-size:100% 100%;
-    align-self: flex-start;
+    background-size: 100% 100%;
+    
 }
 
 
-#Inventaire:hover,
-#Inventaire:focus{
+#bouttonInventaire:hover,
+#bouttonInventaire:focus{
     color: white;
     background-image: url(../images/inventaire_focus.png);
     background-color: rgb(100, 20, 0);
@@ -104,7 +111,7 @@
                 0 0 5px rgb(87, 28, 0);
 }
 
-#Inventaire:active{
+#bouttonInventaire:active{
     background-color: rgb(83, 10, 0);
     box-shadow: 0 1px 2px rgb(82, 12, 0) inset,
                 0 1px 0 rgba(255,255,255,.3);
