@@ -27,7 +27,8 @@
     flex-flow: column wrap;
     justify-content: flex-start;
     align-items: center;
-    width: 80%;
+    width: 85%;
+    
     border: 5px darkgrey solid;
     border-radius: 8px;
 
@@ -42,7 +43,7 @@
 
 #Menu{
     background-image: url("images/ciel-etoile-final.jpg");
-    width: 15%;
+    width: 10%;
     border: 5px darkgrey solid;
     border-radius: 8px;
     height: max-content;
@@ -80,7 +81,15 @@
 
 #Inventaire{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+#Objets{
+    display: flex;
+    flex-flow: row wrap;
     justify-content: flex-start;
     align-items: flex-start;
     align-self: flex-start;
