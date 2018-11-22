@@ -1,6 +1,7 @@
 var inventaire = document.getElementById("bouttonInventaire");
 var inv = document.getElementById("Inventaire");
 var objet = document.getElementById("Objets");
+inv.removeChild(objet);
 inventaire.addEventListener('click', valider);
 
 var objetsAccessibles = [{nom : "clés", image : "images/cles.jpg"}];
