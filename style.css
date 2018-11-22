@@ -103,7 +103,7 @@
     border: 2px black solid;
     border-radius: 3px;
     background-color: brown;
-    background-image: url(../images/inventaire.png);
+    background-image: url(images/inventaire.png);
     background-repeat:no-repeat;
     background-size: 100% 100%;
     
@@ -113,7 +113,7 @@
 #bouttonInventaire:hover,
 #bouttonInventaire:focus{
     color: white;
-    background-image: url(../images/inventaire_focus.png);
+    background-image: url(images/inventaire_focus.png);
     background-color: rgb(100, 20, 0);
     box-shadow: 0 1px 0 rgba(255,255,255,.1),
                 0 0 1px 1px rgba(255,255,255,.3) inset,
@@ -138,7 +138,7 @@
     border: 5px rgb(255, 151, 33) groove;
     border-radius: 3px;
     background-color: rgb(119, 0, 255);
-    background-image: url(../images/play.png);
+    background-image: url(images/play.png);
     background-repeat:no-repeat;
     background-size: 100% 100%;
     background-position: -30px 1px;
@@ -149,7 +149,7 @@
 #lancerJeu:hover,
 #lancerJeu:focus{
     color: white;
-    background-image: url(../images/play.png);
+    background-image: url(images/play.png);
     background-color: rgb(162, 0, 184);
     box-shadow: 0 1px 0 rgba(255,255,255,.1),
                 0 0 1px 1px rgba(255,255,255,.3) inset,
