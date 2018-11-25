@@ -33,3 +33,25 @@ function valider (event){
     }
     ouvert = !ouvert;
 }
+
+function creer_objet (nom){
+    //connexion à la bdd
+    var newobjet = document.createElement("div");
+    newobjet.id = nom;
+    newobjet.style.backgroundImage = bdd.im;
+    newobjet.style.backgroundSize = "100% 100%";
+    newobjet.style.height = "78px";
+    newobjet.style.width = "78px";
+}
+
+function ramasser (obj){
+    obj.addEventListener("click", function(event){
+        objet.appendChild(obj);
+    });
+}
+
+function utiliser(obj, cible){
+    cible.addEventListener("Click", function(event){
+        objet.remove(obj);
+    });
+}
