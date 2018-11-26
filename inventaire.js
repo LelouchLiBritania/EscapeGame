@@ -7,36 +7,37 @@ inventaire.addEventListener('click', valider);
 var objetsAccessibles = [{nom : "clés", image : "images/cles.jpg"}];
 var ouvert = false;
 var cle = document.createElement("div");
-objet.appendChild(cle);
 
 cle.id = "clé";
 cle.style.backgroundImage = "url('images/cles.png')";
 cle.style.backgroundSize = "100% 100%";
 cle.style.height = "78px";
 cle.style.width = "78px";
-
-var reveil = document.createElement("div");
-objet.appendChild(reveil);
-reveil.id = "réveil";
-reveil.style.backgroundImage = "url('images/alarme.png')";
-reveil.style.backgroundSize = "100% 100%";
-reveil.style.height = "78px";
-reveil.style.width = "78px";
+cle.marker=markerd2
 
 
 function valider (event){
     if (ouvert){
         inv.removeChild(objet);
     }
-    else{
+    else{ 
         inv.appendChild(objet);
     }
     ouvert = !ouvert;
 }
 
+function selection(obj){
+    obj.addEventListener("Click", function(event){
+        objet.style.border = "2px red solid"
+    });
+}
+
+selection(objet)
+
 function creer_objet (nom){
     //connexion à la bdd
     var newobjet = document.createElement("div");
+    newobjet.marker=L.marker([x,y])
     newobjet.id = nom;
     newobjet.style.backgroundImage = bdd.im;
     newobjet.style.backgroundSize = "100% 100%";
@@ -45,8 +46,10 @@ function creer_objet (nom){
 }
 
 function ramasser (obj){
-    obj.addEventListener("click", function(event){
+    obj.marker.addEventListener("click", function(event){
         objet.appendChild(obj);
+        obj.marker.remove(mymap);
+        d2=false;
     });
 }
 
@@ -55,3 +58,4 @@ function utiliser(obj, cible){
         objet.remove(obj);
     });
 }
+ramasser(cle);

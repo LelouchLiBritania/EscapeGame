@@ -17,6 +17,11 @@ function diminuer(){
     else{
         sec-=1;
     }
-
-    time.innerHTML=min+':'+sec;
+    if (sec<10){
+        time.innerHTML=min+':0'+sec;
+    }
+    else{
+        time.innerHTML=min+':'+sec;
+    }
+    
 }

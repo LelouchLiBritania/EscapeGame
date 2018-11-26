@@ -11,6 +11,9 @@ objectif.appendChild(objectifd1);
 markerd1.on("click", 
     function fonction(event){
         objectif.appendChild(objectifd2);
+        d2 = true;
+        markerd3.addTo(mymap);
+        markerd1.remove(mymap);
 })
 
 objectifs.appendChild(objectif);

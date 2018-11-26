@@ -12,33 +12,43 @@ marker.bindPopup("Bienvenue au centre IGN de Forcalquier.");
 
 var iconreveil = L.icon({
     iconUrl: 'images/alarme.png',
-    iconSize:     [40, 40],
-    iconanchor: [0,0]
+    iconSize:     [40, 40]
 });
 
 var iconcle = L.icon({
     iconUrl: 'images/cles.png',
-    iconSize: [30,30],
-})
+    iconSize: [30,30]
+});
+
+var iconporte_ouverte = L.icon({
+    iconUrl: 'images/door_open.png',
+    iconSize: [50,50]
+});
 
 var markerd1 = L.marker([44.00853,5.79356], {icon: iconreveil}).addTo(mymap);
 
 
-
+d2=false
      
 var markerd2 = L.marker([44.00848,5.7936], {icon: iconcle});
 
-mymap.on('click',
-    function fonction(event){
-        console.log(mymap.getZoom())
-        if (mymap.getZoom() == 22){
-            markerd2.addTo(mymap);}
-        else{
-            markerd2.remove(mymap);
-        }
+var markerd3 = L.marker([44.00848, 5.79357], {icon: iconporte_ouverte})
+
+window.setInterval(devoile,100);
+function devoile(event){
+    //fonction permettant de dévoiler un marker à un certain zoom
+    //b est le booleen indiquant si on est bien dans la phase où le marqueur est sensé s'afficher
+    //m est le marqueur à dévoiler
+    //z est le zoom minimum pour dévoiler le markeu
+    console.log(mymap.getZoom())
+    if (mymap.getZoom() == 22 && d2){
+        markerd2.addTo(mymap);}
+    else{
+        markerd2.remove(mymap);
     }
+}
  
-)
+
 
 function afficher(event){
     
