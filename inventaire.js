@@ -13,7 +13,7 @@ cle.style.backgroundImage = "url('images/cles.png')";
 cle.style.backgroundSize = "100% 100%";
 cle.style.height = "78px";
 cle.style.width = "78px";
-cle.marker=markerd2
+cle.marker=markerd2;
 
 
 function valider (event){

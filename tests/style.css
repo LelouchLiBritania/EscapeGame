@@ -1,0 +1,195 @@
+#Jeu{
+    background: grey;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+#Accueil{
+    background-image: url("images/forcalquier.jpg");
+    background-size: cover;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+#CorpsAccueil{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+#wrapJeu{
+    
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width : 85%;
+    
+    
+    
+
+}
+
+#zone{
+    display : flex;
+    flex-flow:row;
+    background: lightgrey;
+    border: 5px darkgrey solid;
+    border-radius: 8px;
+    width: 88%;
+    height: 100%;
+}
+
+#carte{
+    height: 500px;
+    width: 99%;
+    border: 2px black solid;
+    border-radius: 8px;
+}
+
+#Menu{
+    background-image: url("images/ciel-etoile-final.jpg");
+    width: 10%;
+    border: 5px darkgrey solid;
+    border-radius: 8px;
+    height: 300px;
+
+}
+
+.CorpsAccueil{
+    background-color: rgba(185, 185, 200, 0.3);
+    border: 5px darkgrey solid;
+    border-radius: 8px;
+}
+
+#ScoreEtTemps{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 99%;
+}
+
+#Intro{
+
+}
+
+#TableauDesScores{
+
+}
+
+#Connection{
+
+}
+
+#Achievements{
+
+}
+
+#Objectifs{
+    align-items: center;
+    height : 450px;
+    width : 15%;
+    min-width: 100px;
+    padding-left : 15px;
+    padding-top : 15px;
+    background-image: url("images/feuille.png");
+    background-size: cover;
+}
+
+#Objectif{
+    color : rgb(0, 0, 0);
+    text-shadow: 0px 0px 3px black;
+    padding : 5px;
+    height : 80%;
+    width : 95%;
+    
+}
+
+#Inventaire{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+#Objets{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+#bouttonInventaire{
+    padding: 30px 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    
+    border: 2px black solid;
+    border-radius: 3px;
+    background-color: brown;
+    background-image: url(images/inventaire.png);
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+
+#bouttonInventaire:hover,
+#bouttonInventaire:focus{
+    color: white;
+    background-image: url(images/inventaire_focus.png);
+    background-color: rgb(100, 20, 0);
+    box-shadow: 0 1px 0 rgba(255,255,255,.1),
+                0 0 1px 1px rgba(255,255,255,.3) inset,
+                0 1px rgba(255,255,255,.4) inset,
+                0 0 5px rgb(87, 28, 0);
+}
+
+#bouttonInventaire:active{
+    background-color: rgb(83, 10, 0);
+    box-shadow: 0 1px 2px rgb(82, 12, 0) inset,
+                0 1px 0 rgba(255,255,255,.3);
+    border: 2px black solid;
+}
+
+
+#lancerJeu{
+    width : 100px;
+    height : 50px;
+    color: white;
+    font-weight: bold;
+    
+    border: 5px rgb(255, 151, 33) groove;
+    border-radius: 3px;
+    background-color: rgb(119, 0, 255);
+    background-image: url(images/play.png);
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    background-position: -30px 1px;
+    
+}
+
+
+#lancerJeu:hover,
+#lancerJeu:focus{
+    color: white;
+    background-image: url(images/play.png);
+    background-color: rgb(162, 0, 184);
+    box-shadow: 0 1px 0 rgba(255,255,255,.1),
+                0 0 1px 1px rgba(255,255,255,.3) inset,
+                0 1px rgba(255,255,255,.4) inset,
+                0 0 5px rgb(37, 0, 170);
+}
+
+#lancerJeu:active{
+    background-color: rgb(66, 0, 94);
+    box-shadow: 0 1px 2px rgb(136, 0, 0) inset,
+                0 1px 0 rgba(255,255,255,.3);
+    border: 2px black solid;
+}

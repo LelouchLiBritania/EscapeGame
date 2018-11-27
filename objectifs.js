@@ -8,6 +8,9 @@ objectifd2.id = "od2";
 objectifd2.innerHTML = "<p> - Trouvez la clé de la coloc' pour fermer la maison avant de partir. <p>";
 
 objectif.appendChild(objectifd1);
+
+var reveil = document.getElementById("reveil");
+markerd1 = reveil.marker;
 markerd1.on("click", 
     function fonction(event){
         objectif.appendChild(objectifd2);
