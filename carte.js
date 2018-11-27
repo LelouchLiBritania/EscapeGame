@@ -10,10 +10,7 @@ mymap.setZoom(20);
 var marker = L.marker([43.962406,5.774013]).addTo(mymap);
 marker.bindPopup("Bienvenue au centre IGN de Forcalquier.");
 
-var iconreveil = L.icon({
-    iconUrl: 'images/alarme.png',
-    iconSize:     [40, 40]
-});
+afficher(1);
 
 var iconcle = L.icon({
     iconUrl: 'images/cles.png',
@@ -25,7 +22,6 @@ var iconporte_ouverte = L.icon({
     iconSize: [50,50]
 });
 
-var markerd1 = L.marker([44.00853,5.79356], {icon: iconreveil}).addTo(mymap);
 
 
 d2=false
@@ -40,7 +36,6 @@ function devoile(event){
     //b est le booleen indiquant si on est bien dans la phase où le marqueur est sensé s'afficher
     //m est le marqueur à dévoiler
     //z est le zoom minimum pour dévoiler le markeu
-    console.log(mymap.getZoom())
     if (mymap.getZoom() == 22 && d2){
         markerd2.addTo(mymap);}
     else{
@@ -50,8 +45,36 @@ function devoile(event){
  
 
 
-function afficher(event){
-    
+function afficher(id){
+    var data = "id="+id+"&demande=affichage";
+
+    var ajax = new XMLHttpRequest();
+    ajax.open('POST', 'connectionBdd.php');
+    ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajax.addEventListener('load',  function () {
+        var reponse = JSON.parse(ajax.response);
+        var place_inventaire = document.getElementById("test_inventaire");
+        var new_objet = document.createElement("div");
+        for (i=0;i<reponse.length;i++){
+
+
+            var iconObjet = L.icon({
+                iconUrl: reponse[i][1],
+                iconSize:     [40, 40]
+            });
+
+            new_objet.id=reponse[i][0];
+            console.log(new_objet.id);
+            var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet}).addTo(mymap);
+            new_objet.marker=markerObjet;
+            
+            new_objet.descriptif = reponse[i][4];
+
+            markerObjet.bindPopup(new_objet.descriptif);
+            document.body.appendChild(new_objet);
+        }
+    });
+    ajax.send(data);
 }
     
 
