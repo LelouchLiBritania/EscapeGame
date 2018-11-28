@@ -63,8 +63,7 @@ function afficher(id){
                 iconSize:     [40, 40]
             });
 
-            new_objet.id=reponse[i][0];
-            console.log(new_objet.id);
+            new_objet.id="objet"+reponse[i][0];
             var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet}).addTo(mymap);
             new_objet.marker=markerObjet;
             
