@@ -3,24 +3,13 @@ var objectif = document.getElementById("Objectif");
 var objectifd1 = document.createElement("div");
 var objectifd2 = document.createElement("div");
 var score_total = document.getElementById("score");
-objectifd1.id = "od1";
-objectifd1.innerHTML= "<p> - Cliquez sur le réveil pour réveiller la coloc'. <p>";
-objectifd2.id = "od2";
-objectifd2.innerHTML = "<p> - Trouvez la clé de la coloc' pour fermer la maison avant de partir. <p>";
 
-objectif.appendChild(objectifd1);
 
-var reveil = document.getElementById("reveil");
-markerd1 = reveil.marker;
-markerd1.on("click", 
-    function fonction(event){
-        objectif.appendChild(objectifd2);
-        d2 = true;
-        markerd3.addTo(mymap);
-        markerd1.remove(mymap);
-})
 
-objectifs.appendChild(objectif);
+
+appeler_objectif(1);
+
+
 
 function appeler_objectif(id){
     var data = "id="+id+"&demande=objectif";
@@ -30,13 +19,30 @@ function appeler_objectif(id){
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajax.addEventListener('load',  function () {
         var reponse = JSON.parse(ajax.response);
-        var new_objet = document.createElement("div");
+        var new_objectif = document.createElement("div");
         for (i=0;i<reponse.length;i++){
-
-
-           
-
+            //On enregistre dans la div les données relatives à l'objectif
+            new_objectif.id="objectif"+reponse[i][0];
+            new_objectif.id_bdd=reponse[i][0];
+            new_objectif.innerHTML = "-"+reponse[i][1];
+            new_objectif.objectif_suivant=reponse[i][9];
+            //les objets sont sensés déjà avoir été créés
+            var obj1=document.getElementById("objet"+reponse[i][2]);
+            if(reponse[i][3]!=-1){
+                var obj2=document.getElementById("objet"+reponse[i][3]);
+            }
+            else{
+                var obj2=obj1;
+            }
             
+            var evt = reponse[i][4];
+            new_objectif.victoire=reponse[i][5];
+            new_objectif.score = reponse[i][6];
+            //permet de générer l'event listener surveillant la condition de réussite
+            objectif.appendChild(new_objectif);
+            objectif.nb_obj+=1;
+            creer_evenement(evt,obj1,obj2,new_objectif);
+
         }
     });
     ajax.send(data);
@@ -44,25 +50,27 @@ function appeler_objectif(id){
 
 function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     if(evt=="click"){
-        obj1.addEventListener("click",function fonction(event){
-            var intitule = document.getElementById("intitutlé"+objectif_a_accomplir.id);
-            intitule.innerHTML = "<strike>"+intitule.innerHTML+"</strike>";
+        obj1.marker.addEventListener("click",function fonction(event){
+            
+            objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
             if (objectif.nb_obj==4){
                 objectif.innerHTML="";
             }
             //ajout à l'inventaire
             var newobjet = document.createElement("div");
             newobjet.id = obj1.id;
-            newobjet.style.backgroundImage = "url("+obj1.marker.icon.iconUrl+")";
+            newobjet.style.backgroundImage = "url("+obj1.marker._icon.src+")";
             newobjet.style.backgroundSize = "100% 100%";
             newobjet.style.height = "78px";
             newobjet.style.width = "78px";
             objet.appendChild(newobjet);//objet est défini dans inventaire
 
             //retire les marqueurs des objets si besoin
-            newobjet.marker.remove(mymap);
+            obj1.marker.remove(mymap);
 
             valider_objectif(objectif_a_accomplir);
+            
+            
         })
     }
 }
@@ -70,20 +78,33 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
 function valider_objectif(objectif_a_accomplir){
     //ajouter le score au score total
     score_total.innerHTML=score_total.innerHTML+objectif_a_accomplir.score;
+    
 
-    //debloquer objets
+    //lecture des objets à rajouter
     var data = "id="+objectif_a_accomplir.id_bdd+"&demande=debloquer_objets";
-
     var ajax = new XMLHttpRequest();
     ajax.open('POST', 'connectionBdd.php');
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajax.addEventListener('load',  function () {
+        //ajout des objets
         var reponse = JSON.parse(ajax.response);
+        
         var new_objet = document.createElement("div");
+        
         for (i=0;i<reponse.length;i++){
-            afficher(reponse[i][0]);
-        }
+            
+            var obj_exixtant=document.getElementById("objet"+reponse[i][0]);
+            if(obj_exixtant==null){
+                afficher(reponse[i][0]);
+            }
+            
+        } 
+    })
+    ajax.send(data);
 
-    //debloquer nouvel objectif
-    appeler_objectif(objectif_a_accomplir.objectif_suivant);
-}
+    //appel du nouvel objectif si il y en a
+    
+    if(objectif_a_accomplir.victoire==0){
+        appeler_objectif(objectif_a_accomplir.objectif_suivant);
+    }
+    };
