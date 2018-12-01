@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 10:16 AM
+-- Generation Time: Dec 01, 2018 at 05:37 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -74,7 +74,7 @@ CREATE TABLE `objet` (
 
 INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`, `zoom_affichage`) VALUES
 (1, 'reveil', 'images/alarme.png', 44.0085, 5.79356, 'Le reveil de la coloque, il a le pouvoir de reveiller quiconque l\'entend...pour mieux se rendormir ensuite.....', 'Clique sur le réveil pour reveiller la coloque', 18),
-(2, 'cle', 'images/cle.png', 44.00848, 5.7936, 'Les clés de la coloc, utile pour ne pas se faire voler, ou disputer par Marie.', 'Les clés servent souvent à fermer et ouvrir des choses, comme une porte par exemple.', 22),
+(2, 'cle', 'images/cles.png', 44.00848, 5.7936, 'Les clés de la coloc, utile pour ne pas se faire voler, ou disputer par Marie.', 'Les clés servent souvent à fermer et ouvrir des choses, comme une porte par exemple.', 22),
 (3, 'porte', 'images/door_open.png', 44.00848, 5.79357, 'UNE PORTE!!! ON PEUT FAIRE DES CHOOSES GROS!!!', 'Voilà une porte qui a besoin d\'une clé pour être fermée...sinon Marie va gueuler.', 0),
 (4, 'voiture', 'images/voiture.png', 44.00803, 5.79414, 'Le trajet dans celle de Marie coûte exactement 0.25 centimes. Sinon y\'a celle de Florent, c\'est gratuit et ça va plus vite!', 'Le parking est au sud de la coloc\'.', 0),
 (5, 'Portail', 'images/portail.png', 43.96202, 5.77388, 'Le portail est fermé on dirait. Vous êtes en avance. Seul pageot pourrait vous aider.', 'Je vous ouvre ce portail, vous en faites pas!', 0);
@@ -100,6 +100,37 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (2, 4),
 (3, 5);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `villes`
+--
+
+CREATE TABLE `villes` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(45) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `lat` double NOT NULL,
+  `lon` double NOT NULL,
+  `Image` varchar(60) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `villes`
+--
+
+INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
+(1, 'Forcalquier', 43.9585, 5.7814, 'images/Forcalquier.png'),
+(2, 'Fontienne', 44.00866, 5.79394, 'images/Fontienne.png'),
+(3, 'Saint-Etienne-Les-Orgues', 44.0453, 5.7801, 'images/St-Etienne-orgues.png'),
+(4, 'Ongle', 44.0277, 5.7337, 'images/Ongle.png'),
+(5, 'Banon', 44.0382, 5.6285, 'images/Banon.png'),
+(6, 'Oppedette', 43.935, 5.5906, 'images/Oppedette.png'),
+(7, 'Dauphin', 43.8984, 5.7831, 'images/Dauphin.png'),
+(8, 'Mane', 43.9382, 5.7685, 'images/Mane.png'),
+(9, 'Lurs', 43.9695, 5.8895, 'images/Lurs.png'),
+(10, 'Oraison', 43.917, 5.9189, 'images/Oraison.png'),
+(11, 'Les Mées', 44.0301, 5.9738, 'images/Mees.png');
+
 --
 -- Indexes for dumped tables
 --
@@ -114,6 +145,12 @@ ALTER TABLE `objectif`
 -- Indexes for table `objet`
 --
 ALTER TABLE `objet`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `villes`
+--
+ALTER TABLE `villes`
   ADD PRIMARY KEY (`id`);
 COMMIT;
 
