@@ -8,6 +8,7 @@
      if(!$LINK){
          die("Connection échouée");
      }
+     mysqli_set_charset($LINK,"utf8");
 
     if ($_POST["demande"]=="affichage"){
         $objet = [];

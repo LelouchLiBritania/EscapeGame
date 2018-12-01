@@ -49,12 +49,14 @@ function afficher(id){
     var data = "id="+id+"&demande=affichage";
 
     var ajax = new XMLHttpRequest();
+    
     ajax.open('POST', 'connectionBdd.php');
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajax.addEventListener('load',  function () {
         var reponse = JSON.parse(ajax.response);
         var place_inventaire = document.getElementById("test_inventaire");
         var new_objet = document.createElement("div");
+        
         for (i=0;i<reponse.length;i++){
 
 

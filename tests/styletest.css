@@ -171,6 +171,13 @@ td{
     align-items: center;
 }
 
+#carre2{
+    height: 100px;
+    width: 200px;
+    background-image: url("images/inventaire.png");
+    background-size: cover
+}
+
 
 @media(max-width: 1650px){
     #wrap1{
