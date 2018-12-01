@@ -34,6 +34,7 @@ function appeler_objectif(id){
             else{
                 var obj2=obj1;
             }
+            console.log(obj1,obj2);
             
             var evt = reponse[i][4];
             new_objectif.victoire=reponse[i][5];
@@ -48,34 +49,69 @@ function appeler_objectif(id){
     ajax.send(data);
 }
 
+
+
 function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     if(evt=="click"){
-        obj1.marker.addEventListener("click",function fonction(event){
+        obj1.marker.addEventListener("click",function fonctionClick(event){
             
-            objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
-            if (objectif.nb_obj==4){
-                objectif.innerHTML="";
-            }
-            //ajout à l'inventaire
-            var newobjet = document.createElement("div");
-            newobjet.id = obj1.id;
-            newobjet.style.backgroundImage = "url("+obj1.marker._icon.src+")";
-            newobjet.style.backgroundSize = "100% 100%";
-            newobjet.style.height = "78px";
-            newobjet.style.width = "78px";
-            objet.appendChild(newobjet);//objet est défini dans inventaire
-
-            //retire les marqueurs des objets si besoin
-            obj1.marker.remove(mymap);
-
+            
+            ajouterInventaire(obj1);
             valider_objectif(objectif_a_accomplir);
             
             
         })
     }
+    if(evt=="superposition"){
+        obj1.marker.addEventListener("click",function fonctionClick2(event){
+            
+            newobjetsuperposition=ajouterInventaire(obj1);
+            
+
+
+            newobjetsuperposition.addEventListener("mousedown",function functionDown(event){
+                obj2.marker._icon.addEventListener("mouseover",function functionEnter(event){
+                    newobjetsuperposition.addEventListener("mouseup",function functionUp(event){
+                        //ajout à l'inventaire
+                        /*var newobjet = document.createElement("div");
+                        newobjet.id = "objet"+obj2.id;
+                        newobjet.style.backgroundImage = "url("+obj2.marker._icon.src+")";
+                        newobjet.style.backgroundSize = "100% 100%";
+                        newobjet.style.height = "78px";
+                        newobjet.style.width = "78px";
+                        objet.appendChild(newobjet);//objet est défini dans inventaire
+                        */
+                        //retire les marqueurs des objets si besoin
+                        //obj2.marker.remove(mymap);
+                        
+                        valider_objectif(objectif_a_accomplir);
+                        
+                    })
+                })
+                obj2.addEventListener("mouseleave",function functionLeave(event){
+                    newobjetsuperposition.removeEventListener("mouseup",functionup);
+                })
+    
+            })
+            newobjetsuperposition.addEventListener("mouseup",function functionUp2(event){
+                obj2.removeEventListener("mouseover",functionEnter);
+                obj2.removeEventListener("mouseover",functionLeave);
+            })
+
+            
+            
+        })
+        
+        
+       
+    }
 }
 
 function valider_objectif(objectif_a_accomplir){
+    if (objectif.nb_obj==4){
+        objectif.innerHTML="";
+    }
+    objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
     //ajouter le score au score total
     score_total.innerHTML=score_total.innerHTML+objectif_a_accomplir.score;
     
@@ -98,13 +134,13 @@ function valider_objectif(objectif_a_accomplir){
                 afficher(reponse[i][0]);
             }
             
-        } 
+        }
+        //appel du nouvel objectif si il y en a
+        if(objectif_a_accomplir.victoire==0){
+            appeler_objectif(objectif_a_accomplir.objectif_suivant);
+        }
     })
     ajax.send(data);
 
-    //appel du nouvel objectif si il y en a
     
-    if(objectif_a_accomplir.victoire==0){
-        appeler_objectif(objectif_a_accomplir.objectif_suivant);
-    }
     };
