@@ -53,7 +53,6 @@
 
 #Menu{
     background-image: url("images/ciel-etoile-final.jpg");
-    width: 10%;
     border: 5px darkgrey solid;
     border-radius: 8px;
     height: 300px;
@@ -71,6 +70,11 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     width: 99%;
+}
+
+#score{
+    font-family: 'Dancing Script', cursive;
+    color: red;
 }
 
 #Intro{
@@ -192,4 +196,18 @@
     box-shadow: 0 1px 2px rgb(136, 0, 0) inset,
                 0 1px 0 rgba(255,255,255,.3);
     border: 2px black solid;
+}
+
+#wrapeMenuEtVilles{
+    display: flex;
+    flex-flow: column;
+    width: 10%;
+}
+
+#villes{
+    display: flex;
+    flex-flow: column;
+    background-image: url("images/fond_carte.jpg");
+    border: 5px darkgrey solid;
+    border-radius: 8px;
 }

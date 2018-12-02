@@ -48,6 +48,34 @@
 
     }
 
+    if($_POST["demande"]=="villes"){
+        $objet = [];
+        $requete = "SELECT name,lat,long,image FROM villes WHERE id = " . $_POST["id"];
+        
+        
+        if ($result = mysqli_query($LINK, $requete)) {
+            while ($ligne = mysqli_fetch_row($result)) {
+                $objet[]=$ligne;
+            }
+        }
+        echo json_encode($objet);
+
+    }
+
+    if($_POST["demande"]=="tempsTrajet"){
+        $objet = [];
+        $requete = "SELECT * FROM trajet WHERE id = " . $_POST["id"];
+        
+        
+        if ($result = mysqli_query($LINK, $requete)) {
+            while ($ligne = mysqli_fetch_row($result)) {
+                $objet[]=$ligne;
+            }
+        }
+        echo json_encode($objet);
+
+    }
+
      
 
    

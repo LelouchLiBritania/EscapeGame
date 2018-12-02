@@ -6,7 +6,7 @@ var score_total = document.getElementById("score");
 
 
 
-appeler_objectif(1)
+setTimeout(function f(){appeler_objectif(1)},50); 
 
 
 
@@ -28,7 +28,7 @@ function appeler_objectif(id){
             //les objets sont sensés déjà avoir été créés
             var obj1=document.getElementById("objet"+reponse[i][3]);
             if(reponse[i][4]!=-1){
-                var obj2=document.getElementById("objet"+reponse[i][4   ]);
+                var obj2=document.getElementById("objet"+reponse[i][4]);
             }
             else{
                 var obj2=obj1;
@@ -110,7 +110,7 @@ function valider_objectif(objectif_a_accomplir){
     }
     objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
     //ajouter le score au score total
-    score_total.innerHTML= score_total.innerHTML.substring(0,8)+(parseFloat( score_total.innerHTML.substring(8) )+parseFloat(objectif_a_accomplir.score));
+    score_total.innerHTML= score_total.innerHTML.substring(0,7)+(parseFloat( score_total.innerHTML.substring(7).split("/")[0] )+parseFloat(objectif_a_accomplir.score))+"/20";
     
 
     //lecture des objets à rajouter
