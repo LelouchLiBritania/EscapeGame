@@ -6,8 +6,14 @@ var score_total = document.getElementById("score");
 
 
 
+<<<<<<< HEAD
 setTimeout(function f(){appeler_objectif(1)},50); 
 
+=======
+setTimeout(function f(){
+    appeler_objectif(1)
+},300);
+>>>>>>> J'ai envoyé juste la table comme ça t'as juste à l'importer en plus du reste. On réunifiera après sur un export de la bdd complète. (y'a aussi les images au passage)
 
 
 function appeler_objectif(id){
@@ -27,6 +33,7 @@ function appeler_objectif(id){
             new_objectif.objectif_suivant=reponse[i][2];
             //les objets sont sensés déjà avoir été créés
             var obj1=document.getElementById("objet"+reponse[i][3]);
+            console.log(reponse[i][3]);
             if(reponse[i][4]!=-1){
                 var obj2=document.getElementById("objet"+reponse[i][4]);
             }
