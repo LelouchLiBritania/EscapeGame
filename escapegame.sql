@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 06:14 PM
+-- Generation Time: Dec 02, 2018 at 06:42 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -54,7 +54,7 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (4, '- Rejoignez le centre IGN à Forcalquier.', 5, 5, -1, 'click', 0, 0.1, 0, 0, 'dispcarte', ''),
 (5, '- Trouvez une carte mère dans Forcalquier.', 6, 6, -1, 'click', 0, 10, 0, 0, 'addinv', ''),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 7, 8, 'click', 0, 20, 0, 10, 'dispcarte', 'addinv'),
-(7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, '\"click\"', 0, 50, 0, 0, 'dispcarte', 'addinv');
+(7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, '\"click\"', 0, 50, 0, 0, 'addinv', 'dispcarte');
 
 -- --------------------------------------------------------
 
@@ -83,14 +83,14 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (3, 'porte', 'images/door_open.png', 44.00848, 5.79357, 'UNE PORTE!!! ON PEUT FAIRE DES CHOOSES GROS!!!', 'Voilà une porte qui a besoin d\'une clé pour être fermée...sinon Marie va gueuler.', 18),
 (4, 'voiture', 'images/voiture.png', 44.00803, 5.79414, 'Le trajet dans celle de Marie coûte exactement 0.25 centimes. Sinon y\'a celle de Florent, c\'est gratuit et ça va plus vite!', 'Le parking est au sud de la coloc\'.', 18),
 (5, 'Portail', 'images/portail.png', 43.96202, 5.77388, 'Le portail est fermé on dirait. Vous êtes en avance. Seul pageot pourrait vous aider.', 'Je vous ouvre ce portail, vous en faites pas!', 18),
-(6, 'carte_mere', 'images/carte_mere.png', 43.95946, 5.78067, 'Une carte pour programmer des instructions dans un appareil électrique.', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.', 22),
+(6, 'carte', 'images/cartemere.png', 43.95946, 5.78067, 'Une carte pour programmer des instructions dans un appareil électrique.', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.', 22),
 (7, 'Cliente', 'images/pnj.png', 43.95867, 5.7808, 'Cette personne a l\'air de connaître la région.', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?', 22),
 (8, 'Boitier', 'images/boitier', 43.95739, 5.80007, 'Un boîtier qui servira de protection pour vos composants du GPS.', 'SIMC possède beaucoup de variété de matériaux. Mais en cherchant bien, vous devriez trouver un boîtier sans problème.', 22),
 (9, 'Habitant', 'images/pnj.png', 43.95775, 5.78279, 'Quelqu\'un qui pourrait vous aider.', 'La citadelle est le lieu de promenade favoris des habitants de la ville. Quelqu\'un vous aidera peut-être là-bas.', 20),
 (10, 'etape1', 'images/vue.png', 43.95724, 5.78251, 'C\'est la première étape du chemin.', '', 20),
 (11, 'etape2', 'images/vue.png', 43.957, 5.78149, 'C\'est la deuxième étape du chemin.', '', 20),
 (12, 'etape3', 'images/vue.png', 43.95711, 5.78187, 'C\'est la dernière étape du chemin.', '', 20),
-(13, 'table_orientation', 'images/tab_ori.png', 43.95704, 5.78211, 'Cette table pourrait vous aider.', 'Il y a une table d\'orientation au sommet de la citadelle.', 22),
+(13, 'tableorientation', 'images/tab_ori.png', 43.95704, 5.78211, 'Cette table pourrait vous aider.', 'Il y a une table d\'orientation au sommet de la citadelle.', 22),
 (14, 'antenne', 'images/antenne.png', 44.04676, 5.77593, 'Une antenne pour capter les ondes des satellites. Très utile pour un GPS.', 'La gendarmerie de St-Etienne-les-Orgues pourrait effectivement posséder une antenne, vu la proximité avec le sommêt de Lure.', 22);
 
 -- --------------------------------------------------------
@@ -112,7 +112,16 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (1, 2),
 (1, 3),
 (2, 4),
-(3, 5);
+(3, 5),
+(5, 6),
+(6, 7),
+(6, 8),
+(8, 9),
+(8, 10),
+(8, 11),
+(8, 12),
+(8, 13),
+(8, 14);
 
 -- --------------------------------------------------------
 
