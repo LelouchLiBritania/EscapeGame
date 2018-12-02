@@ -79,5 +79,7 @@ function afficher(id){
     ajax.send(data);
 }
     
-
+function supprimerCarte(obj){
+    obj.marker.remove(mymap);
+}
 

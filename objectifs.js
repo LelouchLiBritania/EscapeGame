@@ -6,15 +6,7 @@ var score_total = document.getElementById("score");
 
 
 
-<<<<<<< HEAD
 setTimeout(function f(){appeler_objectif(1)},50); 
-
-=======
-setTimeout(function f(){
-    appeler_objectif(1)
-},300);
->>>>>>> J'ai envoyé juste la table comme ça t'as juste à l'importer en plus du reste. On réunifiera après sur un export de la bdd complète. (y'a aussi les images au passage)
-
 
 function appeler_objectif(id){
     var data = "id="+id+"&demande=objectif";
@@ -33,7 +25,6 @@ function appeler_objectif(id){
             new_objectif.objectif_suivant=reponse[i][2];
             //les objets sont sensés déjà avoir été créés
             var obj1=document.getElementById("objet"+reponse[i][3]);
-            console.log(reponse[i][3]);
             if(reponse[i][4]!=-1){
                 var obj2=document.getElementById("objet"+reponse[i][4]);
             }
@@ -44,6 +35,8 @@ function appeler_objectif(id){
             var evt = reponse[i][5];
             new_objectif.victoire=reponse[i][6];
             new_objectif.score = reponse[i][7];
+            new_objectif.dest1 = reponse[i][8];
+            new_objectif.dest2 = reponse[i][9];
             //permet de générer l'event listener surveillant la condition de réussite
             objectif.appendChild(new_objectif);
             objectif.nb_obj+=1;
@@ -61,7 +54,16 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
         obj1.marker.addEventListener("click",function fonctionClick(event){
             
             
-            ajouterInventaire(obj1);
+            if (objectif_a_accomplir.dest1=="addinv"){
+                ajouterInventaire(obj1);
+            }
+            if (objectif_a_accomplir.dest1=="dispinv"){
+                supprimerInventaire(obj1);
+            }
+            if (objectif_a_accomplir.dest1=="dispcarte"){
+                supprimerCarte(obj1);
+            }
+            
             valider_objectif(objectif_a_accomplir);
             
             
@@ -86,6 +88,26 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 //retire les marqueurs des objets si besoin
                 //obj2.marker.remove(mymap);
                 newobjetsuperposition.removeEventListener("mousedown",functionDown);
+
+                if (objectif_a_accomplir.dest1=="addinv"){
+                    ajouterInventaire(obj1);
+                }
+                if (objectif_a_accomplir.dest1=="dispinv"){
+                    supprimerInventaire(obj1);
+                }
+                if (objectif_a_accomplir.dest1=="dispcarte"){
+                    supprimerCarte(obj1);
+                }
+
+                if (objectif_a_accomplir.dest2=="addinv"){
+                    ajouterInventaire(obj2);
+                }
+                if (objectif_a_accomplir.dest2=="dispinv"){
+                    supprimerInventaire(obj2);
+                }
+                if (objectif_a_accomplir.dest2=="dispcarte"){
+                    supprimerCarte(obj2);
+                }
                 
                 valider_objectif(objectif_a_accomplir);
                     

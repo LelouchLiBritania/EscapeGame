@@ -88,17 +88,10 @@ function ajouterInventaire (obj){
 
 }
 
-function ramasser (obj){
-    obj.marker.addEventListener("click", function(event){
-        objet.appendChild(obj);
-        obj.marker.remove(mymap);
-        d2=false;
-    });
+function supprimerInventaire(obj){
+    objet.removeChild(obj);
 }
 
-function utiliser(obj, cible){
-    cible.addEventListener("Click", function(event){
-        objet.remove(obj);
-    });
-}
-ramasser(cle);
+
+
+
