@@ -89,14 +89,9 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 //obj2.marker.remove(mymap);
                 newobjetsuperposition.removeEventListener("mousedown",functionDown);
 
-                if (objectif_a_accomplir.dest1=="addinv"){
-                    ajouterInventaire(obj1);
-                }
+                
                 if (objectif_a_accomplir.dest1=="dispinv"){
                     supprimerInventaire(obj1);
-                }
-                if (objectif_a_accomplir.dest1=="dispcarte"){
-                    supprimerCarte(obj1);
                 }
 
                 if (objectif_a_accomplir.dest2=="addinv"){
