@@ -75,6 +75,17 @@
         echo json_encode($objet);
 
     }
+    if($_POST["demande"]=="scores"){
+        $objet = [];
+        $requete = "SELECT Log, Best FROM loggin ORDER BY best LIMIT 10";
+
+        if ($result = mysqli_query($LINK, $requete)) {
+            while ($ligne = mysqli_fetch_row($result)) {
+                $objet[]=$ligne;
+            }
+        }
+        echo json_encode($objet);
+    }
 
      
 

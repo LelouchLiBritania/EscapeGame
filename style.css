@@ -34,6 +34,14 @@
 
 }
 
+li{
+    border: 1px black solid;
+}
+
+table{
+    border : 2px gold groove;
+}
+
 #zone{
     display : flex;
     flex-flow:row;
@@ -45,7 +53,7 @@
 }
 
 #carte{
-    height: 500px;
+    height: 570px;
     width: 99%;
     border: 2px black solid;
     border-radius: 8px;

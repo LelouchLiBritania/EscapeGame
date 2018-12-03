@@ -3,7 +3,7 @@ var objectif = document.getElementById("Objectif");
 var objectifd1 = document.createElement("div");
 var objectifd2 = document.createElement("div");
 var score_total = document.getElementById("score");
-
+objectif.nb_obj = 0;
 
 
 setTimeout(function f(){appeler_objectif(1)},50); 
@@ -35,11 +35,12 @@ function appeler_objectif(id){
             var evt = reponse[i][5];
             new_objectif.victoire=reponse[i][6];
             new_objectif.score = reponse[i][7];
-            new_objectif.dest1 = reponse[i][8];
-            new_objectif.dest2 = reponse[i][9];
+            new_objectif.dest1 = reponse[i][10];
+            new_objectif.dest2 = reponse[i][11];
             //permet de générer l'event listener surveillant la condition de réussite
             objectif.appendChild(new_objectif);
             objectif.nb_obj+=1;
+            
             creer_evenement(evt,obj1,obj2,new_objectif);
 
         }
@@ -70,12 +71,14 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
         })
     }
     if(evt=="superposition"){
+        
         obj1.marker.addEventListener("click",function fonctionClick2(event){
             
             newobjetsuperposition=ajouterInventaire(obj1);
             
 
             function functionEnter(event){
+                console.log(obj2.marker._icon)
                 //ajout à l'inventaire
                 /*var newobjet = document.createElement("div");
                 newobjet.id = "objet"+obj2.id;
@@ -89,14 +92,8 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 //obj2.marker.remove(mymap);
                 newobjetsuperposition.removeEventListener("mousedown",functionDown);
 
-                if (objectif_a_accomplir.dest1=="addinv"){
-                    ajouterInventaire(obj1);
-                }
                 if (objectif_a_accomplir.dest1=="dispinv"){
                     supprimerInventaire(obj1);
-                }
-                if (objectif_a_accomplir.dest1=="dispcarte"){
-                    supprimerCarte(obj1);
                 }
 
                 if (objectif_a_accomplir.dest2=="addinv"){
@@ -121,7 +118,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
             newobjetsuperposition.addEventListener("mousedown",functionDown);
             newobjetsuperposition.addEventListener("mouseup",function functionUp2(event){
                 //on laisse le temps à la detection de l'event mouseover de se faire avant de l'enlever
-                setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},50);
+                setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},1000);
             });
 
             
