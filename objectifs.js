@@ -29,7 +29,7 @@ function appeler_objectif(id){
                 var obj2=document.getElementById("objet"+reponse[i][4]);
             }
             else{
-                var obj2=obj1;
+                var obj2=null;
             }
             
             var evt = reponse[i][5];
@@ -40,7 +40,6 @@ function appeler_objectif(id){
             //permet de générer l'event listener surveillant la condition de réussite
             objectif.appendChild(new_objectif);
             objectif.nb_obj+=1;
-            
             creer_evenement(evt,obj1,obj2,new_objectif);
 
         }
@@ -71,14 +70,12 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
         })
     }
     if(evt=="superposition"){
-        
         obj1.marker.addEventListener("click",function fonctionClick2(event){
             
             newobjetsuperposition=ajouterInventaire(obj1);
             
 
             function functionEnter(event){
-                console.log(obj2.marker._icon)
                 //ajout à l'inventaire
                 /*var newobjet = document.createElement("div");
                 newobjet.id = "objet"+obj2.id;
@@ -92,8 +89,14 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 //obj2.marker.remove(mymap);
                 newobjetsuperposition.removeEventListener("mousedown",functionDown);
 
+                if (objectif_a_accomplir.dest1=="addinv"){
+                    ajouterInventaire(obj1);
+                }
                 if (objectif_a_accomplir.dest1=="dispinv"){
                     supprimerInventaire(obj1);
+                }
+                if (objectif_a_accomplir.dest1=="dispcarte"){
+                    supprimerCarte(obj1);
                 }
 
                 if (objectif_a_accomplir.dest2=="addinv"){
@@ -118,7 +121,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
             newobjetsuperposition.addEventListener("mousedown",functionDown);
             newobjetsuperposition.addEventListener("mouseup",function functionUp2(event){
                 //on laisse le temps à la detection de l'event mouseover de se faire avant de l'enlever
-                setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},1000);
+                setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},50);
             });
 
             

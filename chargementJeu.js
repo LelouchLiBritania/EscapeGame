@@ -1,0 +1,1 @@
+var bouttonPlay = document.getElementById("lancerJeu");
