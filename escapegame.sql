@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2018 at 10:58 PM
+-- Generation Time: Dec 03, 2018 at 11:50 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -74,11 +74,16 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (3, '- Prenez la voiture au parking.', 4, 4, -1, 'click', 0, 0, 0, 0, 'tp', ''),
 (4, '- Rejoignez le centre IGN à Forcalquier.', 5, 5, -1, 'click', 0, 0, 0, 0, 'dispcarte', ''),
 (5, '- Trouvez une carte mère dans Forcalquier.', 6, 6, -1, 'click', 0, 1, 0, 0, 'addinv', ''),
-(8, '- Assemblez le GPS au centre IGN.', 9, 1, 1, 'superposition', 0, 10, 0, 0, 'dispcarte', 'addcarte'),
+(8, '- Assemblez le GPS au centre IGN.', 9, 15, 16, 'superposition', 0, 10, 0, 0, 'dispcarte', 'addcarte'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 10, 'addinv', 'dispcarte'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte'),
-(10, '- Emmenez votre GPS aux mourres.', 11, 4, -1, 'click', 0, 2, 0, 0, 'tp', 'tp'),
-(9, 'Programmez votre carte mère.', 10, 1, -1, 'validation', 0, 10, 0, 0, 'addinv', '');
+(10, '- Emmenez votre GPS aux mourres.', 11, 4, -1, 'click', 0, 2, 0, 0, 'tp', ''),
+(9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', ''),
+(11, '- Triangulez votre position.', 12, 16, -1, 'superposition', 0, 5, 0, 0, '', ''),
+(12, '- Retournez au centre IGN.', 13, -1, -1, 'click', 0, 0, 0, 0, '', ''),
+(13, '- Faites au moins quatre autres mesures GPS dans d\'autres secteurs de la région de Forcalquier.', 14, -1, -1, 'validation', 0, 10, 0, 5, '', ''),
+(15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 10, '', ''),
+(14, '- Analysez vos données GPS une fois que vous pensez en avoir suffisamment.', 15, -1, -1, 'validation', 0, 10, 0, 5, '', '');
 
 -- --------------------------------------------------------
 
@@ -116,7 +121,15 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (11, 'etape2', 'images/vue.png', 43.957, 5.78149, '<img src= \"images/citadelle_2.png\" />', '', 20, 1),
 (12, 'etape3', 'images/vue.png', 43.95711, 5.78187, '<img src= \"images/citadelle_3.png\" />', '', 20, 1),
 (13, 'tableorientation', 'images/tab_ori.png', 43.95704, 5.78211, '<img src= \"images/Table_orientation.png\" />', 'Il y a une table d\'orientation au sommet de la citadelle.', 22, 1),
-(14, 'antenne', 'images/antenne.png', 44.04676, 5.77593, 'Une antenne pour capter les ondes des satellites. Très utile pour un GPS.', 'La gendarmerie de St-Etienne-les-Orgues pourrait effectivement posséder une antenne, vu la proximité avec le sommêt de Lure.', 22, 3);
+(14, 'antenne', 'images/antenne.png', 44.04676, 5.77593, 'Une antenne pour capter les ondes des satellites. Très utile pour un GPS.', 'La gendarmerie de St-Etienne-les-Orgues pourrait effectivement posséder une antenne, vu la proximité avec le sommêt de Lure.', 22, 3),
+(15, 'Table', 'images/table.png', 43.96261, 5.77402, 'Une table de travail pour assembler vos composants.', '', 21, 1),
+(16, 'GPS', 'images/GPS.png', 43.96263, 5.77408, 'Votre GPS low-cost est enfin assemblé, il reste plus qu\'a programmer la carte de comande.', '', 21, 1),
+(1001, 'bouteille1', 'images/bouteille.png', 44.00799, 5.79398, 'Le champion a laissé traîner ses bouteilles. Récupérez les toutes pour obtenir un bonus.', '', 22, 2),
+(1005, 'bouteille5', 'images/bouteille.png', 43.97829, 5.77153, 'Une autre bouteille!', '', 22, 1),
+(1002, 'bouteille2', 'images/bouteille.png', 44.1236, 5.7912, 'Une autre bouteille!', '', 20, 3),
+(1003, 'bouteille3', 'images/bouteille.png', 44.03838, 5.62858, 'Une autre bouteille!', '', 21, 5),
+(1004, 'bouteille4', 'images/bouteille.png', 43.93383, 5.58578, 'Une autre bouteille!', '', 22, 6),
+(17, 'demineur', 'images/demineur.png', 43.97968, 5.77392, '- Il va falloir trouver où placer le GPS pour capter au mieux les satellites.', '', 18, 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +159,10 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (6, 11),
 (6, 12),
 (6, 13),
-(6, 14);
+(6, 14),
+(7, 15),
+(8, 16),
+(10, 17);
 
 -- --------------------------------------------------------
 
@@ -205,17 +221,17 @@ CREATE TABLE `villes` (
 --
 
 INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
-(1, 'Forcalquier', 43.9585, 5.7814, 'images/Forcalquier.png'),
+(1, 'Forcalquier', 43.96181, 5.77394, 'images/Forcalquier.png'),
 (2, 'Fontienne', 44.00866, 5.79394, 'images/Fontienne.png'),
-(3, 'Saint-Etienne-Les-Orgues', 44.0453, 5.7801, 'images/St-Etienne-orgues.png'),
-(4, 'Ongle', 44.0277, 5.7337, 'images/Ongle.png'),
-(5, 'Banon', 44.0382, 5.6285, 'images/Banon.png'),
-(6, 'Oppedette', 43.935, 5.5906, 'images/Oppedette.png'),
-(7, 'Dauphin', 43.8984, 5.7831, 'images/Dauphin.png'),
-(8, 'Mane', 43.9382, 5.7685, 'images/Mane.png'),
-(9, 'Lurs', 43.9695, 5.8895, 'images/Lurs.png'),
-(10, 'Oraison', 43.917, 5.9189, 'images/Oraison.png'),
-(11, 'Les Mées', 44.0301, 5.9738, 'images/Mees.png');
+(3, 'Saint-Etienne-Les-Orgues', 44.04562, 5.77879, 'images/St-Etienne-orgues.png'),
+(4, 'Ongle', 44.02672, 5.73422, 'images/Ongle.png'),
+(5, 'Banon', 44.03974, 5.62985, 'images/Banon.png'),
+(6, 'Oppedette', 43.93309, 5.58772, 'images/Oppedette.png'),
+(7, 'Dauphin', 43.9004, 5.78385, 'images/Dauphin.png'),
+(8, 'Mane', 43.9374, 5.76653, 'images/Mane.png'),
+(9, 'Lurs', 43.97002, 5.88989, 'images/Lurs.png'),
+(10, 'Oraison', 43.91665, 5.9185, 'images/Oraison.png'),
+(11, 'Les Mées', 44.0295, 5.97592, 'images/Mees.png');
 
 --
 -- Indexes for dumped tables
