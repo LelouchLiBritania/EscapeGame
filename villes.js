@@ -14,7 +14,7 @@ ajax.addEventListener('load',  function () {
     var reponse = JSON.parse(ajax.response);
     for (i=0;i<reponse.length;i++){
         temps_trajet.push([]);
-        for (var j=1;j<=11;j++){
+        for (var j=1;j<=12;j++){
             temps_trajet[i].push(reponse[i][j]);
         }
 
@@ -22,7 +22,7 @@ ajax.addEventListener('load',  function () {
 })
 ajax.send(data);
 
-for (var id=0;id<11;id++){
+for (var id=0;id<=11;id++){
     ajouterVille(id);
     
 }

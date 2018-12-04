@@ -42,6 +42,11 @@ function appeler_objectif(id){
             creer_evenement(evt,obj1,obj2,new_objectif);
 
         }
+        var pageot = document.getElementById("chrisitan")
+        var help = document.getElementById("indice")
+        pageot.addEventListener('click', function{
+            help.innerHTML("<p>"+ objet_actuel.indice + "</p>")
+        })
     });
     ajax.send(data);
 }
@@ -124,6 +129,12 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
         
         
        
+    }
+    if(evt=="validation"){
+        obj1.marker.addEventListener("click",function fonctionClick(event){
+
+            prompt("helloworld")
+        })
     }
 }
 

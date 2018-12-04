@@ -12,7 +12,7 @@
 
     if ($_POST["demande"]=="affichage"){
         $objet = [];
-        $requete = "SELECT name,image,lat,lon,descriptif,Ville FROM objet WHERE id = " . $_POST["id"];
+        $requete = "SELECT name,image,lat,lon,descriptif,Ville,indice FROM objet WHERE id = " . $_POST["id"];
         
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
