@@ -56,6 +56,7 @@ function ajouterVillePart2(id2){
         ville_actuelle.couche.removeLayer(voiture.marker);
         ville.couche.addLayer(voiture.marker);
         ville.couche.addTo(mymap);
+        mymap.setView(voiture.marker.getLatLng(), 13);
     })
 }
 
