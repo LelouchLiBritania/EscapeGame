@@ -10,7 +10,6 @@ setTimeout(function f(){appeler_objectif(1)},50);
 
 function appeler_objectif(id){
     var data = "id="+id+"&demande=objectif";
-
     var ajax = new XMLHttpRequest();
     ajax.open('POST', 'connectionBdd.php');
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

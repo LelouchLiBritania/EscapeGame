@@ -12,7 +12,7 @@
 
     if ($_POST["demande"]=="affichage"){
         $objet = [];
-        $requete = "SELECT name,image,lat,lon,descriptif FROM objet WHERE id = " . $_POST["id"];
+        $requete = "SELECT name,image,lat,lon,descriptif,Ville FROM objet WHERE id = " . $_POST["id"];
         
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
@@ -50,8 +50,7 @@
 
     if($_POST["demande"]=="villes"){
         $objet = [];
-        $requete = "SELECT name,lat,long,image FROM villes WHERE id = " . $_POST["id"];
-        
+        $requete = "SELECT Name,lat,lon,Image FROM villes WHERE id = " . $_POST["id"];
         
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
@@ -64,7 +63,7 @@
 
     if($_POST["demande"]=="tempsTrajet"){
         $objet = [];
-        $requete = "SELECT * FROM trajet WHERE id = " . $_POST["id"];
+        $requete = "SELECT * FROM trajet";
         
         
         if ($result = mysqli_query($LINK, $requete)) {

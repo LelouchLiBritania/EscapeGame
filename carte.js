@@ -67,7 +67,8 @@ function afficher(id){
 
             new_objet.id="objet"+id;
             new_objet.name=reponse[i][0];
-            var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet}).addTo(mymap);
+            new_objet.ville= document.getElementById("ville"+reponse[i][5]);
+            var markerObjet = new_objet.ville.couche.addLayer(L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet}));
             new_objet.marker=markerObjet;
             
             new_objet.descriptif = reponse[i][4];
@@ -80,6 +81,6 @@ function afficher(id){
 }
     
 function supprimerCarte(obj){
-    obj.marker.remove(mymap);
+    obj.ville.couche.removeLayer(marker);
 }
 

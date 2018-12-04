@@ -219,3 +219,10 @@ table{
     border: 5px darkgrey solid;
     border-radius: 8px;
 }
+
+.ville{
+    font-family: 'Dancing Script', cursive;
+    font-size:1.5em;
+    color: rgb(101, 243, 101);
+    background: rgba(70, 70, 70, 0.1);
+}
