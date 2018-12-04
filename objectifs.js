@@ -42,10 +42,10 @@ function appeler_objectif(id){
             creer_evenement(evt,obj1,obj2,new_objectif);
 
         }
-        var pageot = document.getElementById("chrisitan")
+        var pageot = document.getElementById("christian")
         var help = document.getElementById("indice")
-        pageot.addEventListener('click', function{
-            help.innerHTML("<p>"+ objet_actuel.indice + "</p>")
+        pageot.addEventListener('click', function(){
+            help.innerHTML="<p>"+ objet_actuel.indice + "</p>"
         })
     });
     ajax.send(data);
@@ -57,7 +57,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     if(evt=="click"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
             
-            
+            obj1.marker.removeEventListener("click",fonctionClick);
             if (objectif_a_accomplir.dest1=="addinv"){
                 ajouterInventaire(obj1);
             }

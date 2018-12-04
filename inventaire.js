@@ -47,6 +47,7 @@ function ajouterInventaire (obj){
     newobjet.style.zIndex="400000000000";
 
     //retire les marqueurs des objets si besoin
+    obj.ville.couche.removeLayer(marker);
     obj.marker.remove(mymap);
 
     //On ajoute la possibilité de drog & drop l'objet

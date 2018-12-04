@@ -45,18 +45,13 @@ function ajouterVillePart2(id2){
     var voiture = document.getElementById("objet4");
     document.getElementById("ville"+id2).addEventListener("click",function f(event){
         var ville = document.getElementById("ville"+id2);
-        console.log(id_ville_actuelle,ville)
         var ville_actuelle = document.getElementById("ville"+id_ville_actuelle);
-        console.log(id_ville_actuelle,ville,ville_actuelle)
         ville_actuelle.couche.remove();
         
         for (var j=0;j<temps_trajet[id_ville_actuelle-1][ville.idBdd-1];j++){
-            console.log("diminuer");
             diminuer();
         }
         id_ville_actuelle=ville.idBdd;
-        console.log(parseFloat(ville.lat)+0.00003,parseFloat(ville.lng)+0.00003);
-        console.log(ville);
         voiture.marker.setLatLng([parseFloat(ville.lat)+0.00003,parseFloat(ville.lng)+0.00003]);
         ville_actuelle.couche.removeLayer(voiture.marker);
         ville.couche.addLayer(voiture.marker);

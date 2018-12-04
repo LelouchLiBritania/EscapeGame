@@ -10,9 +10,9 @@ mymap.setZoom(20);
 var marker = L.marker([43.962406,5.774013]).addTo(mymap);
 marker.bindPopup("Bienvenue au centre IGN de Forcalquier.");
 
-var objet_actuel;
+setTimeout(function f(){afficher(1)},500);
 
-afficher(1);
+
 
 var iconcle = L.icon({
     iconUrl: 'images/cles.png',
@@ -76,7 +76,7 @@ function afficher(id){
             new_objet.marker=markerObjet;
             
             new_objet.descriptif = reponse[i][4];
-            new_objet.indice = reponse[i][5];
+            new_objet.indice = reponse[i][6];
 
             markerObjet.bindPopup(new_objet.descriptif);
             markerObjet.addEventListener("click", function(){
@@ -90,5 +90,6 @@ function afficher(id){
     
 function supprimerCarte(obj){
     obj.ville.couche.removeLayer(marker);
+    obj.marker.remove(mymap);
 }
 
