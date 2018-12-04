@@ -6,7 +6,7 @@ var score_total = document.getElementById("score");
 objectif.nb_obj = 0;
 
 
-setTimeout(function f(){appeler_objectif(1)},50); 
+setTimeout(function f(){appeler_objectif(1)},5000); 
 
 function appeler_objectif(id){
     var data = "id="+id+"&demande=objectif";

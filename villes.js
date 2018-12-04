@@ -27,30 +27,42 @@ for (var id=0;id<=11;id++){
     
 }
 afficher(4);
-var voiture;
-//Il faut attendre que l'objet voiture soit bien créé
-setTimeout(function f(){voiture = document.getElementById("objet4");},2000); 
+
 //On ne pet ajouter ces eventListener qu'après avoir créé la voiture, qui ne peut être créée qu'après la création de Fontienne
 setTimeout(function f2(){
-    for (var id=1;id<=11;id++){
-        ville = document.getElementById("ville"+id);
-        ville.addEventListener("click",function f(event){
-            var ville_actuelle = document.getElementById("ville"+id_ville_actuelle);
-            ville_actuelle.couche.remove();
-            
-            for (var j=0;i<temps_trajet[id_ville_actuelle][ville.id-1];j++){
-                diminuer();
-            }
-            id_ville_actuelle=ville.idBdd-1;
-            voiture.marker.setLatLng([parseFloat(ville.lat)+0.00003,parseFloat(ville.lng)+0.00003]);
-            ville_actuelle.couche.removeLayer(voiture.marker);
-            ville.couche.addLayer(voiture.marker);
-            ville.couche.addTo(mymap);
-
-        })
+    
+    for (var id2=1;id2<=11;id2++){
+        ajouterVillePart2(id2);
     }
+    var fontienne = document.getElementById("ville2");
+    fontienne.couche.addTo(mymap);
 }
-,10000)
+,5000)
+
+
+
+function ajouterVillePart2(id2){
+    var voiture = document.getElementById("objet4");
+    document.getElementById("ville"+id2).addEventListener("click",function f(event){
+        var ville = document.getElementById("ville"+id2);
+        console.log(id_ville_actuelle,ville)
+        var ville_actuelle = document.getElementById("ville"+id_ville_actuelle);
+        console.log(id_ville_actuelle,ville,ville_actuelle)
+        ville_actuelle.couche.remove();
+        
+        for (var j=0;j<temps_trajet[id_ville_actuelle-1][ville.idBdd-1];j++){
+            console.log("diminuer");
+            diminuer();
+        }
+        id_ville_actuelle=ville.idBdd;
+        console.log(parseFloat(ville.lat)+0.00003,parseFloat(ville.lng)+0.00003);
+        console.log(ville);
+        voiture.marker.setLatLng([parseFloat(ville.lat)+0.00003,parseFloat(ville.lng)+0.00003]);
+        ville_actuelle.couche.removeLayer(voiture.marker);
+        ville.couche.addLayer(voiture.marker);
+        ville.couche.addTo(mymap);
+    })
+}
 
 function ajouterVille(id){
     var ville = document.createElement("li");
@@ -65,11 +77,10 @@ function ajouterVille(id){
         ville.idBdd=id;
         for (i=0;i<reponse.length;i++){
             ville.className ="ville";
-            ville.innerHTML=reponse[i][0];
+            ville.innerHTML="<strong>"+reponse[i][0]+"</strong>";
             ville.lat=reponse[i][1];
             ville.lng=reponse[i][2];
             ville.couche = L.layerGroup();
-
             var iconVille = L.icon({
                 iconUrl: reponse[i][3],
                 iconSize:     [60, 60]

@@ -70,7 +70,9 @@ function afficher(id){
             new_objet.id="objet"+id;
             new_objet.name=reponse[i][0];
             new_objet.ville= document.getElementById("ville"+reponse[i][5]);
-            var markerObjet = new_objet.ville.couche.addLayer(L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet}));
+            var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet});
+            new_objet.ville.couche.addLayer(markerObjet);
+            
             new_objet.marker=markerObjet;
             
             new_objet.descriptif = reponse[i][4];
