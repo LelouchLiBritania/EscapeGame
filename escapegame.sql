@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2018 at 08:53 PM
+-- Generation Time: Dec 05, 2018 at 01:49 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -60,46 +60,47 @@ CREATE TABLE `objectif` (
   `debut` tinyint(1) DEFAULT NULL,
   `bonus` tinyint(1) DEFAULT NULL,
   `destobj1` varchar(45) NOT NULL,
-  `destobj2` varchar(45) NOT NULL
+  `destobj2` varchar(45) NOT NULL,
+  `indice` varchar(300) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `objectif`
 --
 
-INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`, `evenement_de_reussite`, `victoire`, `gain`, `debut`, `bonus`, `destobj1`, `destobj2`) VALUES
-(1, '- Cliquez sur le réveil pour réveiller la coloc', 2, 1, -1, 'validation', 0, 0, 1, 0, 'dispcarte', ''),
-(2, '- Trouvez la clé de la coloc\' pour fermer la maison avant de partir.', 3, 2, 3, 'superposition', 0, 0, 0, 0, 'addinv', 'dispcarte'),
-(3, '- Prenez la voiture au parking.', 4, 4, -1, 'click', 0, 0, 0, 0, 'tp', ''),
-(4, '- Rejoignez le centre IGN à Forcalquier.', 5, 5, -1, 'click', 0, 0, 0, 0, 'dispcarte', ''),
-(5, '- Trouvez une carte mère dans Forcalquier.', 6, 6, -1, 'click', 0, 1, 0, 0, 'addinv', ''),
-(8, '- Assemblez le GPS au centre IGN.', 801, 15, 16, 'superposition', 0, 10, 0, 0, 'dispcarte', 'addcarte'),
-(6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte'),
-(7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte'),
-(10, '- Emmenez votre GPS aux mourres.', 11, 4, -1, 'click', 0, 2, 0, 0, 'tp', ''),
-(9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', ''),
-(11, '- Triangulez votre position.', 12, 16, -1, 'superposition', 0, 5, 0, 0, '', ''),
-(12, '- Retournez au centre IGN.', 13, -1, -1, 'click', 0, 0, 0, 0, '', ''),
-(13, '- Faites au moins quatre autres mesures GPS dans d\'autres secteurs de la région de Forcalquier.', 14, -1, -1, 'validation', 0, 10, 0, 0, '', ''),
-(15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', ''),
-(14, '- Analysez vos données GPS une fois que vous pensez en avoir suffisamment.', 15, -1, -1, 'validation', 0, 10, 0, 0, '', ''),
-(801, '', 802, 6, 15, 'superposition', 0, 0, 0, 0, 'dispinv', ''),
-(802, '', 803, 8, 15, 'superposition', 0, 0, 0, 0, 'dispinv', ''),
-(803, '', 9, 14, 15, 'superposition', 0, 0, 0, 0, 'dispinv', 'dispcarte'),
-(1301, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1302, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1303, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1304, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1305, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1306, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1309, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1308, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1307, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', ''),
-(1001, '', 0, 1001, -1, 'click', 0, 0, 0, 1, 'addinv', ''),
-(1002, '', 0, 1002, -1, 'click', 0, 0, 0, 1, 'addinv', ''),
-(1003, '', 0, 1003, -1, 'click', 0, 0, 0, 1, 'addinv', ''),
-(1004, '', 0, 1004, -1, 'click', 0, 0, 0, 1, 'addinv', ''),
-(1005, '', 0, 1005, -1, 'click', 0, 0, 0, 1, 'addinv', '');
+INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`, `evenement_de_reussite`, `victoire`, `gain`, `debut`, `bonus`, `destobj1`, `destobj2`, `indice`) VALUES
+(1, '- Cliquez sur le réveil pour réveiller la coloc', 2, 1, -1, 'click', 0, 0, 1, 0, 'dispcarte', '', 'Clique sur le réveil pour réveiller la colloque.'),
+(2, '- Trouvez la clé de la coloc\' pour fermer la maison avant de partir.', 3, 2, 3, 'superposition', 0, 0, 0, 0, 'addinv', 'dispcarte', 'Zoomez au maximum près de la porte pour faire apparaître la clé. Ensuite ouvrez l\'inventaire et glissez-là sur la porte.'),
+(3, '- Prenez la voiture au parking.', 4, 4, -1, 'click', 0, 0, 0, 0, 'tp', '', 'La voiture devrais se trouver sur le parking au sud. Une fois que vous avez cliqué dessus, cliquez sur Forcalquier dans la liste des villes pour vous y rendre.'),
+(4, '- Rejoignez le centre IGN à Forcalquier.', 5, 5, -1, 'click', 0, 0, 0, 0, 'dispcarte', '', 'Je vais vous ouvrir le portail.'),
+(5, '- Trouvez une carte mère dans Forcalquier.', 6, 6, -1, 'click', 0, 1, 0, 0, 'addinv', '', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.'),
+(8, '- Assemblez le GPS au centre IGN.', 801, 6, 15, 'superposition', 0, 10, 0, 0, 'dispinv', '', 'Glissez dans le bon rodre les objets sur la table.'),
+(6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
+(7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
+(10, '- Emmenez votre GPS aux mourres.', 11, 4, -1, 'click', 0, 2, 0, 0, 'tp', '', ''),
+(9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', ''),
+(11, '- Triangulez votre position.', 12, 16, -1, 'superposition', 0, 5, 0, 0, '', '', ''),
+(12, '- Retournez au centre IGN.', 13, -1, -1, 'click', 0, 0, 0, 0, '', '', ''),
+(13, '- Faites au moins quatre autres mesures GPS dans d\'autres secteurs de la région de Forcalquier.', 14, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', '', ''),
+(14, '- Analysez vos données GPS une fois que vous pensez en avoir suffisamment.', 15, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(801, '', 802, 8, 15, 'superposition', 0, 0, 0, 0, 'dispinv', '', ''),
+(802, '', 803, 14, 15, 'superposition', 0, 0, 0, 0, 'dispinv', '', ''),
+(803, '', 9, 15, 16, 'click', 0, 0, 0, 0, 'dispcarte', 'addinv', ''),
+(1301, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1302, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1303, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1304, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1305, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1306, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1309, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1308, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1307, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
+(1001, '', 0, 1001, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
+(1002, '', 0, 1002, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
+(1003, '', 0, 1003, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
+(1004, '', 0, 1004, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
+(1005, '', 0, 1005, -1, 'click', 0, 0, 0, 1, 'addinv', '', '');
 
 -- --------------------------------------------------------
 

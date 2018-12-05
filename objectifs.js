@@ -3,6 +3,7 @@ var objectif = document.getElementById("Objectif");
 var objectifd1 = document.createElement("div");
 var objectifd2 = document.createElement("div");
 var score_total = document.getElementById("score");
+var indice ;
 objectif.nb_obj = 0;
 
 
@@ -36,20 +37,38 @@ function appeler_objectif(id){
             new_objectif.score = reponse[i][7];
             new_objectif.dest1 = reponse[i][10];
             new_objectif.dest2 = reponse[i][11];
+            indice = reponse[i][12];
+            
             //permet de générer l'event listener surveillant la condition de réussite
             objectif.appendChild(new_objectif);
             objectif.nb_obj+=1;
             creer_evenement(evt,obj1,obj2,new_objectif);
 
         }
-        var pageot = document.getElementById("christian")
-        var help = document.getElementById("indice")
-        pageot.addEventListener('click', function(){
-            help.innerHTML="<p>"+ objet_actuel.indice + "</p>"
-        })
     });
     ajax.send(data);
 }
+
+
+var pageot = document.getElementById("christian");
+var help = document.getElementById("indice");
+help.innerHTML="Moi c'est pageot";
+
+pageot.addEventListener('click', function(){
+            
+    var ancien = help.innerHTML;
+    console.log(ancien);
+    console.log(indice);
+    console.log(indice!=ancien);
+    setTimeout(function(){
+        if(indice!=ancien){
+            help.innerHTML=indice;
+            for (var j=0;j<30;j++){
+                diminuer();
+            }
+        }
+    },100);
+});
 
 
 
