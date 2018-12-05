@@ -10,6 +10,9 @@ function diminuer(){
     t = time.innerHTML.split(":");
     min=t[0];
     sec=t[1];
+    if(min==0 && sec==0){
+        victoire("fini");
+    }
     if(sec==0){
         if(min<=0){
             stop();

@@ -75,7 +75,6 @@ function afficher(id){
             new_objet.marker=markerObjet;
             
             new_objet.descriptif = reponse[i][4];
-            new_objet.indice = reponse[i][6];
 
             markerObjet.bindPopup(new_objet.descriptif);
             markerObjet.addEventListener("click", function(){

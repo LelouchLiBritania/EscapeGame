@@ -3,6 +3,7 @@ var objectif = document.getElementById("Objectif");
 var objectifd1 = document.createElement("div");
 var objectifd2 = document.createElement("div");
 var score_total = document.getElementById("score");
+var score_actuel=0;
 var indice ;
 objectif.nb_obj = 0;
 var score_max;
@@ -79,6 +80,7 @@ pageot.addEventListener('click', function(){
 
 
 function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
+    console.log(obj1,obj2);
     if(evt=="click"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
             
@@ -99,10 +101,66 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
         })
     }
     if(evt=="superposition"){
-        obj1.marker.addEventListener("click",function fonctionClick2(event){
+        
+            if (obj1.parentNode != objet){
+
             
-            newobjetsuperposition=ajouterInventaire(obj1);
-            
+            obj1.marker.addEventListener("click",function fonctionClick2(event){
+                
+                newobjetsuperposition=ajouterInventaire(obj1);
+                
+
+                function functionEnter(event){
+                    //ajout à l'inventaire
+                    /*var newobjet = document.createElement("div");
+                    newobjet.id = "objet"+obj2.id;
+                    newobjet.style.backgroundImage = "url("+obj2.marker._icon.src+")";
+                    newobjet.style.backgroundSize = "100% 100%";
+                    newobjet.style.height = "78px";
+                    newobjet.style.width = "78px";
+                    objet.appendChild(newobjet);//objet est défini dans inventaire
+                    */
+                    //retire les marqueurs des objets si besoin
+                    //obj2.marker.remove(mymap);
+                    newobjetsuperposition.removeEventListener("mousedown",functionDown);
+
+                    
+                    if (objectif_a_accomplir.dest1=="dispinv"){
+                        supprimerInventaire(obj1);
+                    }
+
+                    if (objectif_a_accomplir.dest2=="addinv"){
+                        ajouterInventaire(obj2);
+                    }
+                    if (objectif_a_accomplir.dest2=="dispinv"){
+                        supprimerInventaire(obj2);
+                    }
+                    if (objectif_a_accomplir.dest2=="dispcarte"){
+                        supprimerCarte(obj2);
+                    }
+                    
+                    valider_objectif(objectif_a_accomplir);
+                        
+                }
+
+                function functionDown(event){
+                    obj2.marker._icon.addEventListener("mouseover",functionEnter);
+        
+                }
+
+                newobjetsuperposition.addEventListener("mousedown",functionDown);
+                newobjetsuperposition.addEventListener("mouseup",function functionUp2(event){
+                    //on laisse le temps à la detection de l'event mouseover de se faire avant de l'enlever
+                    setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},50);
+                });
+
+                
+                
+            })
+        }
+
+        else{
+                
 
             function functionEnter(event){
                 //ajout à l'inventaire
@@ -116,19 +174,17 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 */
                 //retire les marqueurs des objets si besoin
                 //obj2.marker.remove(mymap);
-                newobjetsuperposition.removeEventListener("mousedown",functionDown);
+                obj1.removeEventListener("mousedown",functionDown);
 
                 
                 if (objectif_a_accomplir.dest1=="dispinv"){
                     supprimerInventaire(obj1);
                 }
 
-                if (objectif_a_accomplir.dest2=="addinv"){
-                    ajouterInventaire(obj2);
-                }
                 if (objectif_a_accomplir.dest2=="dispinv"){
                     supprimerInventaire(obj2);
                 }
+
                 if (objectif_a_accomplir.dest2=="dispcarte"){
                     supprimerCarte(obj2);
                 }
@@ -148,9 +204,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},50);
             });
 
-            
-            
-        })
+        }
         
         
        
@@ -170,7 +224,7 @@ function valider_objectif(objectif_a_accomplir){
     objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
     //ajouter le score au score total, la fonction 20*4/PI * ARCTAN( (gain+score)/score_max) permet de creer un gain diminuant au fur et à mesure que le score est élevé
     gain = parseFloat(objectif_a_accomplir.score);
-    score_actuel = parseFloat( score_total.innerHTML.substring(7).split("/")[0] );
+    score_actuel+= parseFloat( score_total.innerHTML.substring(7).split("/")[0] );
     //La fonction toFixed permet de ne garder que 2 décimales
     score_total.innerHTML= score_total.innerHTML.substring(0,7)+(80*Math.atan( (gain+score_actuel)/score_max )/Math.PI).toFixed(2)+"/20";
     
@@ -202,7 +256,7 @@ function valider_objectif(objectif_a_accomplir){
             setTimeout(function f(){appeler_objectif(objectif_a_accomplir.objectif_suivant)},500);
         }
         else{
-            victoire();
+            victoire("v");
         }
     })
     ajax.send(data);
@@ -210,14 +264,25 @@ function valider_objectif(objectif_a_accomplir){
     
     };
 
-function victoire(){
+function victoire(s){
     fenetre_victoire = document.createElement("div");
     fenetre_victoire.id = "victoire";
     var fenetre = document.getElementById("Jeu");
     var message_de_victoire = document.createElement("p");
-    message_de_victoire.innerHTML = "Félicitaions, vous avez fini votre projet à temps. Voici votre note : "+score_total.innerHTML.substring(7);
-    message_de_victoire.id = "messageVictoire";
-    fenetre_victoire.append(message_de_victoire);
+    if(s=="victoire"){
+        message_de_victoire.innerHTML = "Félicitaions, vous avez fini votre projet à temps. Voici votre note : "+score_total.innerHTML.substring(7);
+        message_de_victoire.id = "messageVictoire";
+        fenetre_victoire.append(message_de_victoire);
+    }
+   
+    
+    var form = document.createElement("form");
+    form.action="log.php";
+    form.method="post";
+    fenetre_victoire.appendChild(form);
+
+    form.innerHTML = "<input type=\"text\" name=\"loggin\" value=\"login\" > <input type=\"hidden\" name=\"score\" value=\" "+score_total.innerHTML.substring(7)+"\" >"
+    
     fenetre.appendChild(fenetre_victoire);
 }
 
