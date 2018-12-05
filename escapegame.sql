@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 09:27 PM
--- Server version: 5.7.17
--- PHP Version: 5.6.30
+-- Hôte : 127.0.0.1
+-- Généré le :  jeu. 06 déc. 2018 à 00:10
+-- Version du serveur :  5.7.17
+-- Version de PHP :  5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `escapegame`
+-- Base de données :  `escapegame`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ennigmes`
+-- Structure de la table `ennigmes`
 --
 
 CREATE TABLE `ennigmes` (
@@ -36,7 +36,7 @@ CREATE TABLE `ennigmes` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ennigmes`
+-- Déchargement des données de la table `ennigmes`
 --
 
 INSERT INTO `ennigmes` (`id`, `objectif`, `message`, `reponse`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `ennigmes` (`id`, `objectif`, `message`, `reponse`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loggin`
+-- Structure de la table `loggin`
 --
 
 CREATE TABLE `loggin` (
@@ -63,7 +63,7 @@ CREATE TABLE `loggin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `loggin`
+-- Déchargement des données de la table `loggin`
 --
 
 INSERT INTO `loggin` (`Log`, `Best`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `loggin` (`Log`, `Best`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `objectif`
+-- Structure de la table `objectif`
 --
 
 CREATE TABLE `objectif` (
@@ -94,7 +94,7 @@ CREATE TABLE `objectif` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `objectif`
+-- Déchargement des données de la table `objectif`
 --
 
 INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`, `evenement_de_reussite`, `victoire`, `gain`, `debut`, `bonus`, `destobj1`, `destobj2`, `indice`) VALUES
@@ -106,9 +106,10 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (8, '- Assemblez le GPS au centre IGN.', 9, 15, 16, 'click', 0, 10, 0, 0, 'dispcarte', '', 'Glissez dans le bon ordre les objets sur la table.'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
-(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'superposition', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
+(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'click', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
 (9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', 'Les chiffres premiers permettent des décompositions intéressantes. Voyez si on ne peut pas trouver l\'âge du capitaine facilement d\'abord.'),
-(15, '- Présentez votre projet au centre.', -1, 18, -1, 'click', 1, 10, 0, 0, '', '', ''),
+(15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', '', ''),
+(14, '- Analysez vos données GPS au centre IGN', 15, 17, -1, 'validation', 0, 10, 0, 0, '', '', ''),
 (1301, '- Faites un relevé GPS à Mane.', 1302, 1301, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1302, '- Faites un relevé GPS à Oppedette.', 1303, 1302, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1303, '- Faites un relevé GPS à Dauphin.', 1304, 1303, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
@@ -127,7 +128,7 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `objet`
+-- Structure de la table `objet`
 --
 
 CREATE TABLE `objet` (
@@ -143,7 +144,7 @@ CREATE TABLE `objet` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `objet`
+-- Déchargement des données de la table `objet`
 --
 
 INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`, `zoom_affichage`, `Ville`) VALUES
@@ -187,7 +188,7 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `objet_a_debloquer`
+-- Structure de la table `objet_a_debloquer`
 --
 
 CREATE TABLE `objet_a_debloquer` (
@@ -196,7 +197,7 @@ CREATE TABLE `objet_a_debloquer` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `objet_a_debloquer`
+-- Déchargement des données de la table `objet_a_debloquer`
 --
 
 INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
@@ -239,7 +240,7 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trajet`
+-- Structure de la table `trajet`
 --
 
 CREATE TABLE `trajet` (
@@ -258,7 +259,7 @@ CREATE TABLE `trajet` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `trajet`
+-- Déchargement des données de la table `trajet`
 --
 
 INSERT INTO `trajet` (`Ville`, `Forcalquier`, `Fontienne`, `St-Etienne-les-Orgues`, `Ongle`, `Banon`, `Oppedette`, `Dauphin`, `Mane`, `Lurs`, `Oraison`, `Les_Mees`) VALUES
@@ -277,7 +278,7 @@ INSERT INTO `trajet` (`Ville`, `Forcalquier`, `Fontienne`, `St-Etienne-les-Orgue
 -- --------------------------------------------------------
 
 --
--- Table structure for table `villes`
+-- Structure de la table `villes`
 --
 
 CREATE TABLE `villes` (
@@ -289,7 +290,7 @@ CREATE TABLE `villes` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `villes`
+-- Déchargement des données de la table `villes`
 --
 
 INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
@@ -306,41 +307,41 @@ INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
 (11, 'Les Mées', 44.0295, 5.97592, 'images/Mees.png');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `ennigmes`
+-- Index pour la table `ennigmes`
 --
 ALTER TABLE `ennigmes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `loggin`
+-- Index pour la table `loggin`
 --
 ALTER TABLE `loggin`
   ADD PRIMARY KEY (`Log`);
 
 --
--- Indexes for table `objectif`
+-- Index pour la table `objectif`
 --
 ALTER TABLE `objectif`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `objet`
+-- Index pour la table `objet`
 --
 ALTER TABLE `objet`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `trajet`
+-- Index pour la table `trajet`
 --
 ALTER TABLE `trajet`
   ADD PRIMARY KEY (`Ville`);
 
 --
--- Indexes for table `villes`
+-- Index pour la table `villes`
 --
 ALTER TABLE `villes`
   ADD PRIMARY KEY (`id`);
