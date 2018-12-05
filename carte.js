@@ -26,17 +26,6 @@ var iconporte_ouverte = L.icon({
 
 
 
-d2=false
-     
-var markerd2 = L.marker([44.00848,5.7936], {icon: iconcle});
-
-var markerd3 = L.marker([44.00848, 5.79357], {icon: iconporte_ouverte})
-
-function devoile(objet){
-    marker = objet.
-    
-    
-}
 
 
 function afficher(id){
@@ -62,13 +51,21 @@ function afficher(id){
             new_objet.id="objet"+id;
             new_objet.name=reponse[i][0];
             new_objet.ville= document.getElementById("ville"+reponse[i][5]);
+            new_objet.affiche = true;
+            new_objet.zoom_affichage=reponse[i][6];
             var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet});
             mymap.addEventListener("zoom", function(){
-                if (mymap.getZoom() == 22 && d2){
-                    markerObjet.addTo(mymap);}
-                else{
-                    markerObjet.remove(mymap);
+                if(new_objet.affiche && mymap.getZoom() < new_objet.zoom_affichage){
+                    new_objet.marker.remove(new_objet.ville.couche);
+                    new_objet.affiche=!new_objet.affiche;
                 }
+                if(!new_objet.affiche && mymap.getZoom() >= new_objet.zoom_affichage){
+                    new_objet.ville.couche.addLayer(markerObjet);
+                    new_objet.affiche=!new_objet.affiche;
+                }
+                
+                
+                   
             }) 
             new_objet.ville.couche.addLayer(markerObjet);
             
