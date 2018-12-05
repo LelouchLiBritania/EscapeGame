@@ -249,6 +249,7 @@ function ennigme(id){
     ajaxen.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajaxen.addEventListener('load',  function () {
         var responsen = JSON.parse(ajaxen.response);
+        console.log(responsen);
         var enigma = prompt(responsen[0])
         if(enigma == responsen[1]){
 

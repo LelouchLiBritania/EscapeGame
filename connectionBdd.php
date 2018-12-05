@@ -25,7 +25,6 @@
     if ($_POST["demande"]=="objectif"){
         $objet = [];
         $requete = "SELECT * FROM objectif WHERE id = " . $_POST["id"];
-        
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
                 $objet[]=$ligne;
@@ -36,8 +35,8 @@
 
     if ($_POST["demande"]=="ennigme"){
         $objet = [];
-        $requete = "SELECT * FROM ennigme WHERE id = " . $_POST["id"];
-        
+        $requete = "SELECT * FROM ennigme WHERE objectif = " . $_POST["id"];
+        echo $requete;
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
                 $objet[]=$ligne;

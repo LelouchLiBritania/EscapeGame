@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 07:53 PM
+-- Generation Time: Dec 05, 2018 at 09:27 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -96,27 +96,22 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (3, '- Prenez la voiture au parking.', 4, 4, -1, 'click', 0, 0, 0, 0, 'tp', '', 'La voiture devrais se trouver sur le parking au sud. Une fois que vous avez cliqué dessus, cliquez sur Forcalquier dans la liste des villes pour vous y rendre.'),
 (4, '- Rejoignez le centre IGN à Forcalquier.', 5, 5, -1, 'click', 0, 0, 0, 0, 'dispcarte', '', 'Je vais vous ouvrir le portail.'),
 (5, '- Trouvez une carte mère dans Forcalquier.', 6, 6, -1, 'click', 0, 1, 0, 0, 'addinv', '', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.'),
-(8, '- Assemblez le GPS au centre IGN.', 801, 6, 15, 'superposition', 0, 10, 0, 0, 'dispinv', '', 'Glissez dans le bon ordre les objets sur la table.'),
+(8, '- Assemblez le GPS au centre IGN.', 9, 15, 16, 'click', 0, 10, 0, 0, 'dispcarte', '', 'Glissez dans le bon ordre les objets sur la table.'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
-(10, '- Faites une acquisition aux mourres', 11, 16, 1103, 'click', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
+(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'click', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
 (9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', 'Les chiffres premiers permettent des décompositions intéressantes. Voyez si on ne peut pas trouver l\'âge du capitaine facilement d\'abord.'),
-(12, '- Retournez au centre IGN.', 13, -1, -1, 'click', 0, 0, 0, 0, '', '', ''),
-(13, '- Faites au moins quatre autres mesures GPS dans d\'autres secteurs de la région de Forcalquier.', 1301, 16, -1, 'validation', 0, 10, 0, 0, '', '', ''),
 (15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', '', ''),
-(14, '- Analysez vos données GPS une fois que vous pensez en avoir suffisamment.', 15, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(801, '', 802, 8, 15, 'superposition', 0, 0, 0, 0, 'dispinv', '', ''),
-(802, '', 803, 14, 15, 'superposition', 0, 0, 0, 0, 'dispinv', '', ''),
-(803, '', 9, 15, 16, 'click', 0, 0, 0, 0, 'dispcarte', 'addinv', ''),
-(1301, '', 1302, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1302, '', 1303, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1303, '', 1304, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1304, '', 1305, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1305, '', 1306, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1306, '', 1307, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1309, '', 14, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1308, '', 1309, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
-(1307, '', 1308, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(14, '- Analysez vos données GPS au centre IGN', 15, 17, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1301, '- Faites un relevé GPS à Mane.', 1302, 1301, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1302, '- Faites un relevé GPS à Oppedette.', 1303, 1302, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1303, '- Faites un relevé GPS à Dauphin.', 1304, 1303, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1304, '- Faites un relevé GPS à Banon.', 1305, 1304, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1305, '- Faites un relevé GPS à Lurs.', 1306, 1305, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1306, '- Faites un relevé GPS à Ongle.', 1307, 1306, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1309, '- Faites un relevé GPS aux Mées.', 14, 1309, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1308, '- Faites un relevé GPS à Oraison.', 1309, 1308, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1307, '- Faites un relevé GPS à Fontienne.', 1308, 1307, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1001, '', 0, 1001, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
 (1002, '', 0, 1002, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
 (1003, '', 0, 1003, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
@@ -212,9 +207,8 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (6, 13),
 (6, 14),
 (7, 15),
-(803, 16),
+(8, 16),
 (10, 1101),
-(12, 1301),
 (12, 1301),
 (12, 1302),
 (12, 1303),
@@ -225,7 +219,6 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (12, 1308),
 (12, 1309),
 (2, 1001),
-(2, 1001),
 (2, 1002),
 (2, 1003),
 (2, 1004),
@@ -233,7 +226,8 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (10, 1102),
 (10, 1103),
 (10, 1104),
-(10, 1105);
+(10, 1105),
+(1309, 17);
 
 -- --------------------------------------------------------
 
