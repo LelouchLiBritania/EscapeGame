@@ -24,7 +24,6 @@ function objectifbonus(){
     ajaxbonus.open('POST', 'connectionBdd.php');
     ajaxbonus.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajaxbonus.addEventListener('load',  function () {
-        console.log(ajaxbonus.response);
         var reponsebonus = JSON.parse(ajaxbonus.response);
         for (i=0; i<reponsebonus.length; i++){
             appeler_objectif(reponsebonus[i]);
@@ -32,8 +31,6 @@ function objectifbonus(){
     });
     ajaxbonus.send(databonus);
 }
-
-
 
 
 setTimeout(function f(){appeler_objectif(1)},5000); 
@@ -105,7 +102,7 @@ pageot.addEventListener('click', function(){
 
 
 function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
-    console.log(obj1,obj2);
+    
     if(evt=="click"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
             
@@ -127,7 +124,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     }
     if(evt=="superposition"){
         
-            if (obj1.parentNode != objet){
+            if (obj1.surCarte){
 
             
             obj1.marker.addEventListener("click",function fonctionClick2(event){
@@ -218,15 +215,15 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                     
             }
 
-            function functionDown(event){
-                obj2.marker._icon.addEventListener("mouseover",functionEnter);
+            function functionDown2(event){
+                obj2.marker._icon.addEventListener("mouseover",functionEnter2);
     
             }
 
-            newobjetsuperposition.addEventListener("mousedown",functionDown);
-            newobjetsuperposition.addEventListener("mouseup",function functionUp2(event){
+            obj1.addEventListener("mousedown",functionDown2);
+            obj1.addEventListener("mouseup",function functionUp3(event){
                 //on laisse le temps à la detection de l'event mouseover de se faire avant de l'enlever
-                setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter)},50);
+                setTimeout(function f() {obj2.marker._icon.removeEventListener("mouseover",functionEnter2)},50);
             });
 
         }
@@ -277,9 +274,9 @@ function valider_objectif(objectif_a_accomplir){
     objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
     //ajouter le score au score total, la fonction 20*4/PI * ARCTAN( (gain+score)/score_max) permet de creer un gain diminuant au fur et à mesure que le score est élevé
     gain = parseFloat(objectif_a_accomplir.score);
-    score_actuel+= parseFloat( score_total.innerHTML.substring(7).split("/")[0] );
+    score_actuel+= gain;
     //La fonction toFixed permet de ne garder que 2 décimales
-    score_total.innerHTML= score_total.innerHTML.substring(0,7)+(80*Math.atan( (gain+score_actuel)/score_max )/Math.PI).toFixed(2)+"/20";
+    score_total.innerHTML= (80*Math.atan( score_actuel/score_max )/Math.PI).toFixed(2)+"/20";
     
 
     //lecture des objets à rajouter

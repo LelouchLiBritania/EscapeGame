@@ -51,13 +51,16 @@ function afficher(id){
             new_objet.id="objet"+id;
             new_objet.name=reponse[i][0];
             new_objet.ville= document.getElementById("ville"+reponse[i][5]);
-            new_objet.affiche = true;
             new_objet.zoom_affichage=reponse[i][6];
-            new_objet.surCarte = true;
             var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet});
-            new_objet.ville.couche.addLayer(markerObjet);
             new_objet.marker=markerObjet;
-            console.log(new_objet.marker);
+            if(mymap.getZoom>=new_objet.zoom_affichage){
+                new_objet.affiche = true;
+                new_objet.ville.couche.addLayer(markerObjet);
+            }
+            
+            new_objet.surCarte = true;
+            
             mymap.addEventListener("zoom", function (){
                 if(new_objet.affiche && mymap.getZoom() < new_objet.zoom_affichage&&new_objet.surCarte){
                     new_objet.marker.remove(new_objet.ville.couche);
@@ -86,8 +89,7 @@ function afficher(id){
 }
     
 function supprimerCarte(obj){
-    obj.ville.couche.removeLayer(marker);
-    obj.marker.remove(mymap);
+    marker.remove(obj.ville.couche);
     obj.surCarte=false;
     
 }

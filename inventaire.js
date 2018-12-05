@@ -36,7 +36,7 @@ function ajouterInventaire (obj){
     newobjet.style.zIndex="400000000000";
 
     //retire les marqueurs des objets si besoin
-    obj.ville.couche.removeLayer(marker);
+    marker.remove(obj.ville.couche);
     obj.marker.remove(mymap);
     obj.surCarte=false;
 
