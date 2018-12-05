@@ -5,7 +5,16 @@ var objectifd2 = document.createElement("div");
 var score_total = document.getElementById("score");
 var indice ;
 objectif.nb_obj = 0;
-
+var score_max;
+var data_score = "demande=score_max";
+var ajax_score = new XMLHttpRequest();
+ajax_score.open('POST', 'connectionBdd.php');
+ajax_score.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+ajax_score.addEventListener('load',  function () {
+    var reponse = JSON.parse(ajax_score.response);
+    score_max=reponse[0][0];
+})
+ajax_score.send(data_score);
 
 setTimeout(function f(){appeler_objectif(1)},5000); 
 
@@ -159,8 +168,11 @@ function valider_objectif(objectif_a_accomplir){
         objectif.innerHTML="";
     }
     objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
-    //ajouter le score au score total
-    score_total.innerHTML= score_total.innerHTML.substring(0,7)+(parseFloat( score_total.innerHTML.substring(7).split("/")[0] )+parseFloat(objectif_a_accomplir.score))+"/20";
+    //ajouter le score au score total, la fonction 20*4/PI * ARCTAN( (gain+score)/score_max) permet de creer un gain diminuant au fur et à mesure que le score est élevé
+    gain = parseFloat(objectif_a_accomplir.score);
+    score_actuel = parseFloat( score_total.innerHTML.substring(7).split("/")[0] );
+    //La fonction toFixed permet de ne garder que 2 décimales
+    score_total.innerHTML= score_total.innerHTML.substring(0,7)+(80*Math.atan( (gain+score_actuel)/score_max )/Math.PI).toFixed(2)+"/20";
     
 
     //lecture des objets à rajouter
@@ -189,11 +201,25 @@ function valider_objectif(objectif_a_accomplir){
         if(objectif_a_accomplir.victoire==0){
             setTimeout(function f(){appeler_objectif(objectif_a_accomplir.objectif_suivant)},500);
         }
+        else{
+            victoire();
+        }
     })
     ajax.send(data);
 
     
     };
+
+function victoire(){
+    fenetre_victoire = document.createElement("div");
+    fenetre_victoire.id = "victoire";
+    var fenetre = document.getElementById("Jeu");
+    var message_de_victoire = document.createElement("p");
+    message_de_victoire.innerHTML = "Félicitaions, vous avez fini votre projet à temps. Voici votre note : "+score_total.innerHTML.substring(7);
+    message_de_victoire.id = "messageVictoire";
+    fenetre_victoire.append(message_de_victoire);
+    fenetre.appendChild(fenetre_victoire);
+}
 
 
 

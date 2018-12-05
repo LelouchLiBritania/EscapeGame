@@ -50,7 +50,7 @@
 
     if($_POST["demande"]=="villes"){
         $objet = [];
-        $requete = "SELECT Name,lat,lon,Image FROM villes WHERE id = " . $_POST["id"];
+        $requete = "SELECT Name,lat,lon,Image FROM villes WHERE id = " . $_POST["id"] ." ORDER BY id";
         
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
@@ -76,7 +76,19 @@
     }
     if($_POST["demande"]=="scores"){
         $objet = [];
-        $requete = "SELECT Log, Best FROM loggin ORDER BY best LIMIT 10";
+        $requete = "SELECT Log, Best FROM loggin ORDER BY best DESC LIMIT 10";
+
+        if ($result = mysqli_query($LINK, $requete)) {
+            while ($ligne = mysqli_fetch_row($result)) {
+                $objet[]=$ligne;
+            }
+        }
+        echo json_encode($objet);
+    }
+
+    if($_POST["demande"]=="score_max"){
+        $objet = [];
+        $requete = "SELECT SUM(gain) FROM objectif";
 
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {

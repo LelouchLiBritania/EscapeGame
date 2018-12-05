@@ -4,15 +4,18 @@ var ajax = new XMLHttpRequest();
 ajax.open('POST', 'connectionBdd.php');
 ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 ajax.addEventListener('load',  function () {
-    console.log(ajax.response);
     var reponse = JSON.parse(ajax.response);
     
     for (i=0;i<reponse.length;i++){
         //On enregistre dans la div les données relatives à l'objectif
-        ligne=document.createElement("li");
+        var ligne=document.createElement("tr");
         tab.appendChild(ligne);
-        ligne.innerHTML = reponse[i][0]+" | "+reponse[i][1];
-        console.log(reponse[i][0]+" | "+reponse[i][1]);
+        var nom = document.createElement("td");
+        var score = document.createElement("td");
+        nom.innerHTML = reponse[i][0];
+        score.innerHTML = reponse[i][1];
+        ligne.appendChild(nom);
+        ligne.appendChild(score);
     }
 });
 ajax.send(data); 
