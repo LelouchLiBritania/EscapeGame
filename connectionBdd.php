@@ -34,6 +34,18 @@
         echo json_encode($objet);
     }
 
+    if ($_POST["demande"]=="ennigme"){
+        $objet = [];
+        $requete = "SELECT * FROM ennigme WHERE id = " . $_POST["id"];
+        
+        if ($result = mysqli_query($LINK, $requete)) {
+            while ($ligne = mysqli_fetch_row($result)) {
+                $objet[]=$ligne;
+            }
+        }
+        echo json_encode($objet);
+    }
+
     if($_POST["demande"]=="bonus"){
         $objet = [];
         $requete = "SELECT id FROM objectif WHERE bonus = 1";

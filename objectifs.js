@@ -34,6 +34,8 @@ function objectifbonus(){
 }
 
 
+
+
 setTimeout(function f(){appeler_objectif(1)},5000); 
 
 function appeler_objectif(id){
@@ -234,10 +236,37 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     }
     if(evt=="validation"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
-
-            prompt("helloworld")
+            ennigme(obj1.id);
+            
         })
     }
+}
+
+function ennigme(id){
+    var dataen = "id="+id+"&demande=ennigme";
+    var ajaxen = new XMLHttpRequest();
+    ajaxen.open('POST', 'connectionBdd.php');
+    ajaxen.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajaxen.addEventListener('load',  function () {
+        var responsen = JSON.parse(ajaxen.response);
+        var enigma = prompt(responsen[0])
+        if(enigma == responsen[1]){
+
+            if (objectif_a_accomplir.dest1=="addinv"){
+                ajouterInventaire(obj1);
+            }
+            if (objectif_a_accomplir.dest1=="dispinv"){
+                supprimerInventaire(obj1);
+            }
+            if (objectif_a_accomplir.dest1=="dispcarte"){
+                supprimerCarte(obj1);
+            }
+            
+            valider_objectif(objectif_a_accomplir);
+
+        }
+    });
+    ajaxen.send(dataen);
 }
 
 function valider_objectif(objectif_a_accomplir){
