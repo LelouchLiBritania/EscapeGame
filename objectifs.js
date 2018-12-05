@@ -5,7 +5,7 @@ var objectifd2 = document.createElement("div");
 var score_total = document.getElementById("score");
 var score_actuel=0;
 var indice ;
-objectif.nb_obj = 0;
+nb_obj = 0;
 var score_max;
 var data_score = "demande=score_max";
 var ajax_score = new XMLHttpRequest();
@@ -51,6 +51,7 @@ function appeler_objectif(id){
             if (new_objectif.bonus==0){
                 new_objectif.innerHTML = reponse[i][1];
                 new_objectif.objectif_suivant=reponse[i][2];
+                nb_obj+=1;
             }
                     
             
@@ -73,7 +74,7 @@ function appeler_objectif(id){
             
             //permet de générer l'event listener surveillant la condition de réussite
             objectif.appendChild(new_objectif);
-            objectif.nb_obj+=1;
+            
             creer_evenement(evt,obj1,obj2,new_objectif);
 
         }
@@ -184,7 +185,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
         else{
                 
 
-            function functionEnter(event){
+            function functionEnter2(event){
                 //ajout à l'inventaire
                 /*var newobjet = document.createElement("div");
                 newobjet.id = "objet"+obj2.id;
@@ -196,7 +197,7 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
                 */
                 //retire les marqueurs des objets si besoin
                 //obj2.marker.remove(mymap);
-                obj1.removeEventListener("mousedown",functionDown);
+                obj1.removeEventListener("mousedown",functionDown2);
 
                 
                 if (objectif_a_accomplir.dest1=="dispinv"){
@@ -248,9 +249,9 @@ function ennigme(objectif_a_accomplir,obj1){
     ajaxen.addEventListener('load',  function () {
         var responsen = JSON.parse(ajaxen.response);
         console.log(responsen[0][0],responsen[0][1]);
-        var enigma = parseFloat(prompt(responsen[0][0]));
+        var enigma = prompt(responsen[0][0]);
         
-        if(enigma == responsen[0][1]){
+        if(enigma == String(responsen[0][1])){
             if (objectif_a_accomplir.dest1=="addinv"){
                 ajouterInventaire(obj1);
             }
@@ -271,9 +272,9 @@ function ennigme(objectif_a_accomplir,obj1){
 }
 
 function valider_objectif(objectif_a_accomplir){
-    if (objectif.nb_obj==4){
+    if (nb_obj>=4){
         objectif.innerHTML="";
-        objectif.nb_obj=0;
+        nb_obj=0;
     }
     objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
     //ajouter le score au score total, la fonction 20*4/PI * ARCTAN( (gain+score)/score_max) permet de creer un gain diminuant au fur et à mesure que le score est élevé
@@ -333,9 +334,14 @@ function victoire(s){
     var message_de_victoire = document.createElement("p");
     if(s=="victoire"){
         message_de_victoire.innerHTML = "Félicitaions, vous avez fini votre projet à temps. Voici votre note : "+score_total.innerHTML.substring(7);
-        message_de_victoire.id = "messageVictoire";
-        fenetre_victoire.append(message_de_victoire);
+        
     }
+
+    else{
+        message_de_victoire.innerHTML = "La fin du projet est déjà arrivée... Voici votre note : "+score_total.innerHTML.substring(7);
+    }
+    message_de_victoire.id = "messageVictoire";
+    fenetre_victoire.append(message_de_victoire);
    
     
     var form = document.createElement("form");
