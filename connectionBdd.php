@@ -34,6 +34,18 @@
         echo json_encode($objet);
     }
 
+    if($_POST["demande"]=="bonus"){
+        $objet = [];
+        $requete = "SELECT id FROM objectif WHERE bonus = 1";
+        echo $requete;
+        if ($result = mysqli_query($LINK, $requete)) {
+            while ($ligne = mysqli_fetch_row($result)) {
+                $objet[]=$ligne;
+            }
+        }
+        echo json_encode($objet);
+    }
+
     if($_POST["demande"]=="debloquer_objets"){
         $objet = [];
         $requete = "SELECT id_objet FROM objet_a_debloquer WHERE id_objectif = " . $_POST["id"];

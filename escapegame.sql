@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 03:02 PM
+-- Generation Time: Dec 05, 2018 at 07:53 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `escapegame`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ennigmes`
+--
+
+CREATE TABLE `ennigmes` (
+  `id` int(11) NOT NULL,
+  `objectif` int(11) NOT NULL,
+  `message` varchar(300) NOT NULL,
+  `reponse` varchar(45) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ennigmes`
+--
+
+INSERT INTO `ennigmes` (`id`, `objectif`, `message`, `reponse`) VALUES
+(1, 9, 'Le Xème jour du Yème mois de l’année 1900 + Z, un bateau ayant U hélices, V cheminées et W hommes d’équipage est lancé.\r\nSachant que le produit UVWXYZ ajouté de la racine cubique de l’âge du capitaine (qui est grand-père) est égal à 4002331, de combien d\'hommes est composé l\'équipage?', '101'),
+(3, 1301, 'Où est la mine?\r\n*- - - - -*\r\n|0 1 1 2 1|\r\n|0 1 X A X|\r\n|1 2 1 B 1|\r\n|C D E F 0|\r\n*- - - - -*\r\nLes chiffres indiquent le nombre de mines voisines, le X les mines déjà trouvées.', 'C'),
+(4, 1302, 'Où est la mine?\r\n*- - - - - -*\r\n|0 0 2 2 2 1|\r\n|1 1 2 X X A|\r\n|B X D 3 X 2|\r\n|1 1 1 1 2 E|\r\n|0 0 0 0 1 F|\r\n*- - - - - -*\r\nLes chiffres indiquent le nombre de mines voisines, le X les mines déjà trouvées.', 'F');
 
 -- --------------------------------------------------------
 
@@ -77,30 +99,29 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (8, '- Assemblez le GPS au centre IGN.', 801, 6, 15, 'superposition', 0, 10, 0, 0, 'dispinv', '', 'Glissez dans le bon ordre les objets sur la table.'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
-(10, '- Emmenez votre GPS aux mourres.', 11, 4, -1, 'click', 0, 2, 0, 0, 'tp', '', ''),
-(9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', ''),
-(11, '- Triangulez votre position.', 12, 16, -1, 'superposition', 0, 5, 0, 0, '', '', ''),
+(10, '- Faites une acquisition aux mourres', 11, 16, 1103, 'click', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
+(9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', 'Les chiffres premiers permettent des décompositions intéressantes. Voyez si on ne peut pas trouver l\'âge du capitaine facilement d\'abord.'),
 (12, '- Retournez au centre IGN.', 13, -1, -1, 'click', 0, 0, 0, 0, '', '', ''),
-(13, '- Faites au moins quatre autres mesures GPS dans d\'autres secteurs de la région de Forcalquier.', 14, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(13, '- Faites au moins quatre autres mesures GPS dans d\'autres secteurs de la région de Forcalquier.', 1301, 16, -1, 'validation', 0, 10, 0, 0, '', '', ''),
 (15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', '', ''),
 (14, '- Analysez vos données GPS une fois que vous pensez en avoir suffisamment.', 15, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
 (801, '', 802, 8, 15, 'superposition', 0, 0, 0, 0, 'dispinv', '', ''),
 (802, '', 803, 14, 15, 'superposition', 0, 0, 0, 0, 'dispinv', '', ''),
 (803, '', 9, 15, 16, 'click', 0, 0, 0, 0, 'dispcarte', 'addinv', ''),
-(1301, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1302, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1303, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1304, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1305, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1306, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1309, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1308, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1307, '', 0, -1, -1, 'validation', 0, 10, 0, 1, '', '', ''),
-(1001, '', 0, 1001, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
-(1002, '', 0, 1002, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
-(1003, '', 0, 1003, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
-(1004, '', 0, 1004, -1, 'click', 0, 0, 0, 1, 'addinv', '', ''),
-(1005, '', 0, 1005, -1, 'click', 0, 0, 0, 1, 'addinv', '', '');
+(1301, '', 1302, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1302, '', 1303, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1303, '', 1304, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1304, '', 1305, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1305, '', 1306, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1306, '', 1307, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1309, '', 14, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1308, '', 1309, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1307, '', 1308, -1, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(1001, '', 0, 1001, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
+(1002, '', 0, 1002, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
+(1003, '', 0, 1003, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
+(1004, '', 0, 1004, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
+(1005, '', 0, 1005, -1, 'click', 0, 3, 0, 1, 'addinv', '', '');
 
 -- --------------------------------------------------------
 
@@ -130,23 +151,22 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (3, 'porte', 'images/door_open.png', 44.00848, 5.79357, 'Il faudrait fermer la porte à clé. Mais où sont ces fichues clés?', 'Voilà une porte qui a besoin d\'une clé pour être fermée...sinon Marie va gueuler.', 18, 2),
 (4, 'voiture', 'images/voiture.png', 44.00803, 5.79414, 'Le trajet dans celle de Marie coûte exactement 0.25 centimes. Sinon y\'a celle de Florent, c\'est gratuit et ça va plus vite!', 'Le parking est au sud de la coloc\'.', 18, 2),
 (5, 'Portail', 'images/portail.png', 43.96202, 5.77388, 'Le portail est fermé on dirait. Vous êtes en avance. Seul pageot pourrait vous aider.', 'Je vous ouvre ce portail, vous en faites pas!', 18, 1),
-(6, 'carte', 'images/cartemere.png', 43.95946, 5.78067, 'Une carte pour programmer des instructions dans un appareil électrique.', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.', 22, 1),
-(7, 'Cliente', 'images/pnj.png', 43.95867, 5.7808, 'Le SMIC matériaux vend beaucoup d\'objets de bricolage. Vous devriez y trouver un boitier là-bas.', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?', 22, 1),
-(8, 'Boitier', 'images/boitier.png', 43.95739, 5.80007, 'Un boîtier qui servira de protection pour vos composants du GPS.', 'SIMC possède beaucoup de variété de matériaux. Mais en cherchant bien, vous devriez trouver un boîtier sans problème.', 22, 1),
-(9, 'Habitant', 'images/pnj.png', 43.95775, 5.78279, 'On raconte qu\'il est impossible de se perdre au sommet de la citadelle. Les étapes sur le chemin vous indiqueront où regarder.', 'La citadelle est le lieu de promenade favoris des habitants de la ville. Quelqu\'un vous aidera peut-être là-bas.', 20, 1),
-(10, 'etape1', 'images/vue.png', 43.95724, 5.78251, '<img src= \"images/citadelle_1.png\" style=\"width: 500px; heigth: 500px;\" />', '', 20, 1),
-(11, 'etape2', 'images/vue.png', 43.957, 5.78149, '<img src= \"images/citadelle_2.png\" style=\"width: 500px; heigth: 500px;\"/>', '', 20, 1),
-(12, 'etape3', 'images/vue.png', 43.95711, 5.78187, '<img src= \"images/citadelle_3.png\" style=\"width: 500px; heigth: 500px;\"/>', '', 20, 1),
-(13, 'tableorientation', 'images/tab_ori.png', 43.95704, 5.78211, '<img src= \"images/Table_orientation.png\" style=\"width: 500px; heigth: 500px;\"/>', 'Il y a une table d\'orientation au sommet de la citadelle.', 22, 1),
-(14, 'antenne', 'images/antenne.png', 44.04676, 5.77593, 'Une antenne pour capter les ondes des satellites. Très utile pour un GPS.', 'La gendarmerie de St-Etienne-les-Orgues pourrait effectivement posséder une antenne, vu la proximité avec le sommêt de Lure.', 22, 3),
-(15, 'Table', 'images/table.png', 43.96261, 5.77402, 'Une table de travail pour assembler vos composants.', '', 21, 1),
-(16, 'GPS', 'images/GPS.png', 43.96263, 5.77408, 'Votre GPS low-cost est enfin assemblé, il reste plus qu\'a programmer la carte de comande.', '', 21, 1),
+(6, 'carte', 'images/cartemere.png', 43.95946, 5.78067, 'Une carte pour programmer des instructions dans un appareil électrique.', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.', 20, 1),
+(7, 'Cliente', 'images/pnj.png', 43.95867, 5.7808, 'Le SMIC matériaux vend beaucoup d\'objets de bricolage. Vous devriez y trouver un boitier là-bas.', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?', 18, 1),
+(8, 'Boitier', 'images/boitier.png', 43.95739, 5.80007, 'Un boîtier qui servira de protection pour vos composants du GPS.', 'SIMC possède beaucoup de variété de matériaux. Mais en cherchant bien, vous devriez trouver un boîtier sans problème.', 21, 1),
+(9, 'Habitant', 'images/pnj.png', 43.95775, 5.78279, 'On raconte qu\'il est impossible de se perdre au sommet de la citadelle. Les étapes sur le chemin vous indiqueront où regarder.', 'La citadelle est le lieu de promenade favoris des habitants de la ville. Quelqu\'un vous aidera peut-être là-bas.', 18, 1),
+(10, 'etape1', 'images/vue.png', 43.95724, 5.78251, '<img src= \"images/citadelle_1.png\" style=\"width: 500px; heigth: 500px;\" />', '', 21, 1),
+(11, 'etape2', 'images/vue.png', 43.957, 5.78149, '<img src= \"images/citadelle_2.png\" style=\"width: 500px; heigth: 500px;\"/>', '', 21, 1),
+(12, 'etape3', 'images/vue.png', 43.95711, 5.78187, '<img src= \"images/citadelle_3.png\" style=\"width: 500px; heigth: 500px;\"/>', '', 21, 1),
+(13, 'tableorientation', 'images/tab_ori.png', 43.95704, 5.78211, '<img src= \"images/Table_orientation.png\" style=\"width: 500px; heigth: 500px;\"/>', 'Il y a une table d\'orientation au sommet de la citadelle.', 20, 1),
+(14, 'antenne', 'images/antenne.png', 44.04676, 5.77593, 'Une antenne pour capter les ondes des satellites. Très utile pour un GPS.', 'La gendarmerie de St-Etienne-les-Orgues pourrait effectivement posséder une antenne, vu la proximité avec le sommêt de Lure.', 19, 3),
+(15, 'Table', 'images/table.png', 43.96261, 5.77402, 'Une table de travail pour assembler vos composants.', '', 20, 1),
+(16, 'GPS', 'images/GPS.png', 43.96263, 5.77408, 'Votre GPS low-cost est enfin assemblé, il reste plus qu\'a programmer la carte de comande.', '', 20, 1),
 (1001, 'bouteille1', 'images/bouteille.png', 44.00799, 5.79398, 'Le champion a laissé traîner ses bouteilles. Récupérez les toutes pour obtenir un bonus.', '', 22, 2),
 (1005, 'bouteille5', 'images/bouteille.png', 43.97829, 5.77153, 'Une autre bouteille!', '', 22, 1),
-(1002, 'bouteille2', 'images/bouteille.png', 44.1236, 5.7912, 'Une autre bouteille!', '', 20, 3),
+(1002, 'bouteille2', 'images/bouteille.png', 44.1236, 5.7912, 'Une autre bouteille!', '', 18, 3),
 (1003, 'bouteille3', 'images/bouteille.png', 44.03838, 5.62858, 'Une autre bouteille!', '', 21, 5),
 (1004, 'bouteille4', 'images/bouteille.png', 43.93383, 5.58578, 'Une autre bouteille!', '', 22, 6),
-(17, 'demineur', 'images/demineur.png', 43.97968, 5.77392, '- Il va falloir trouver où placer le GPS pour capter au mieux les satellites.', '', 18, 1),
 (1305, 'gps_lurs', 'images/GPS.png', 43.97109, 5.88961, '', '', 21, 9),
 (1308, 'gps_oraison', 'images/GPS.png', 43.9294, 5.9086, '', '', 20, 10),
 (1301, 'gps_mane', 'images/GPS.png', 43.93796, 5.76837, '', '', 21, 8),
@@ -155,7 +175,12 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (1304, 'gps_banon', 'images/GPS.png', 44.03292, 5.63253, '', '', 20, 5),
 (1306, 'gps_ongle', 'images/GPS.png', 44.02844, 5.73178, '', '', 21, 4),
 (1307, 'gps_fontienne', 'images/GPS.png', 44.0099, 5.79074, '', '', 21, 2),
-(1309, 'gps_mees', 'images/GPS.png', 44.02983, 5.98089, '', '', 21, 11);
+(1309, 'gps_mees', 'images/GPS.png', 44.02983, 5.98089, '', '', 21, 11),
+(1101, 'rocher1', 'images/rocher.png', 43.97992, 5.77436, '1, je regarde 2', '', 18, 1),
+(1102, 'rocher2', 'images/rocher.png', 43.97966, 5.7738, '2, je regarde 5', '', 18, 1),
+(1103, 'rocher3', 'images/rocher.png', 43.97924, 5.77386, '3, je regarde 5', '', 18, 1),
+(1104, 'rocher4', 'images/rocher.png', 43.97878, 5.77481, '4, je regarde 1 et 2', '', 18, 1),
+(1105, 'rocher5', 'images/rocher.png', 43.97949, 5.77544, '5, je regarde 4', '', 18, 1);
 
 -- --------------------------------------------------------
 
@@ -188,7 +213,7 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (6, 14),
 (7, 15),
 (803, 16),
-(10, 17),
+(10, 1101),
 (12, 1301),
 (12, 1301),
 (12, 1302),
@@ -204,7 +229,11 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (2, 1002),
 (2, 1003),
 (2, 1004),
-(2, 1005);
+(2, 1005),
+(10, 1102),
+(10, 1103),
+(10, 1104),
+(10, 1105);
 
 -- --------------------------------------------------------
 
@@ -278,6 +307,12 @@ INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ennigmes`
+--
+ALTER TABLE `ennigmes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `loggin`

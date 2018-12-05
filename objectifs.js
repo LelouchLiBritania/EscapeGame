@@ -17,6 +17,23 @@ ajax_score.addEventListener('load',  function () {
 })
 ajax_score.send(data_score);
 
+
+function objectifbonus(){
+    var databonus = "demande=bonus";
+    var ajaxbonus = new XMLHttpRequest();
+    ajaxbonus.open('POST', 'connectionBdd.php');
+    ajaxbonus.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajaxbonus.addEventListener('load',  function () {
+        console.log(ajaxbonus.response);
+        var reponsebonus = JSON.parse(ajaxbonus.response);
+        for (i=0; i<reponsebonus.length; i++){
+            appeler_objectif(reponsebonus[i]);
+        }
+    });
+    ajaxbonus.send(databonus);
+}
+
+
 setTimeout(function f(){appeler_objectif(1)},5000); 
 
 function appeler_objectif(id){
@@ -31,8 +48,14 @@ function appeler_objectif(id){
             //On enregistre dans la div les données relatives à l'objectif
             new_objectif.id="objectif"+reponse[i][0];
             new_objectif.id_bdd=reponse[i][0];
-            new_objectif.innerHTML = reponse[i][1];
-            new_objectif.objectif_suivant=reponse[i][2];
+            new_objectif.bonus=reponse[i][9];
+            if (new_objectif.bonus==0){
+                new_objectif.innerHTML = reponse[i][1];
+                new_objectif.objectif_suivant=reponse[i][2];
+            }
+                    
+            
+            
             //les objets sont sensés déjà avoir été créés
             var obj1=document.getElementById("objet"+reponse[i][3]);
             if(reponse[i][4]!=-1){
@@ -249,15 +272,23 @@ function valider_objectif(objectif_a_accomplir){
             
         }
         
+        if(objectif_a_accomplir.id_bdd==2){
+
+            setTimeout(objectifbonus(), 1000);
+        }
+        
 
         //appel du nouvel objectif si il y en a
         //le setTimeout permet d'attendre que la création des objets soit bien fini, pour ne pas avoir d'objets null ensuite
-        if(objectif_a_accomplir.victoire==0){
-            setTimeout(function f(){appeler_objectif(objectif_a_accomplir.objectif_suivant)},500);
+        if(objectif_a_accomplir.bonus==0){
+            if(objectif_a_accomplir.victoire==0){
+                setTimeout(function f(){appeler_objectif(objectif_a_accomplir.objectif_suivant)},500);
+            }
+            else{
+                victoire("v");
+            }
         }
-        else{
-            victoire("v");
-        }
+        
     })
     ajax.send(data);
 
