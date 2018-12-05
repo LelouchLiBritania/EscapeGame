@@ -233,39 +233,36 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     }
     if(evt=="validation"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
-            en = ennigme(objectif_a_accomplir.id_bdd);
-            if(en){
-                if (objectif_a_accomplir.dest1=="addinv"){
-                    ajouterInventaire(obj1);
-                }
-                if (objectif_a_accomplir.dest1=="dispinv"){
-                    supprimerInventaire(obj1);
-                }
-                if (objectif_a_accomplir.dest1=="dispcarte"){
-                    supprimerCarte(obj1);
-                }
-                
-                valider_objectif(objectif_a_accomplir);
-            }
+            var en = ennigme(objectif_a_accomplir,obj1);
+            
             
         })
     }
 }
 
-function ennigme(id){
-    var dataen = "id="+id+"&demande=ennigme";
+function ennigme(objectif_a_accomplir,obj1){
+    var dataen = "id="+objectif_a_accomplir.id_bdd+"&demande=ennigme";
     var ajaxen = new XMLHttpRequest();
     ajaxen.open('POST', 'connectionBdd.php');
     ajaxen.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajaxen.addEventListener('load',  function () {
         var responsen = JSON.parse(ajaxen.response);
-        console.log(responsen);
-        var enigma = prompt(responsen[0][0])
+        console.log(responsen[0][0],responsen[0][1]);
+        var enigma = parseFloat(prompt(responsen[0][0]));
+        
         if(enigma == responsen[0][1]){
-            return true;
-        }
-        else{
-            return false;
+            if (objectif_a_accomplir.dest1=="addinv"){
+                ajouterInventaire(obj1);
+            }
+            if (objectif_a_accomplir.dest1=="dispinv"){
+                supprimerInventaire(obj1);
+            }
+            if (objectif_a_accomplir.dest1=="dispcarte"){
+                supprimerCarte(obj1);
+            }
+            
+            valider_objectif(objectif_a_accomplir);
+            
         }
         
         
@@ -276,6 +273,7 @@ function ennigme(id){
 function valider_objectif(objectif_a_accomplir){
     if (objectif.nb_obj==4){
         objectif.innerHTML="";
+        objectif.nb_obj=0;
     }
     objectif_a_accomplir.innerHTML = "<strike>"+objectif_a_accomplir.innerHTML+"</strike>";
     //ajouter le score au score total, la fonction 20*4/PI * ARCTAN( (gain+score)/score_max) permet de creer un gain diminuant au fur et à mesure que le score est élevé
