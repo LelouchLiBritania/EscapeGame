@@ -233,7 +233,20 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     }
     if(evt=="validation"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
-            ennigme(obj1.id);
+            en = ennigme(objectif_a_accomplir.id_bdd);
+            if(en){
+                if (objectif_a_accomplir.dest1=="addinv"){
+                    ajouterInventaire(obj1);
+                }
+                if (objectif_a_accomplir.dest1=="dispinv"){
+                    supprimerInventaire(obj1);
+                }
+                if (objectif_a_accomplir.dest1=="dispcarte"){
+                    supprimerCarte(obj1);
+                }
+                
+                valider_objectif(objectif_a_accomplir);
+            }
             
         })
     }
@@ -247,22 +260,15 @@ function ennigme(id){
     ajaxen.addEventListener('load',  function () {
         var responsen = JSON.parse(ajaxen.response);
         console.log(responsen);
-        var enigma = prompt(responsen[0])
-        if(enigma == responsen[1]){
-
-            if (objectif_a_accomplir.dest1=="addinv"){
-                ajouterInventaire(obj1);
-            }
-            if (objectif_a_accomplir.dest1=="dispinv"){
-                supprimerInventaire(obj1);
-            }
-            if (objectif_a_accomplir.dest1=="dispcarte"){
-                supprimerCarte(obj1);
-            }
-            
-            valider_objectif(objectif_a_accomplir);
-
+        var enigma = prompt(responsen[0][0])
+        if(enigma == responsen[0][1]){
+            return true;
         }
+        else{
+            return false;
+        }
+        
+        
     });
     ajaxen.send(dataen);
 }
