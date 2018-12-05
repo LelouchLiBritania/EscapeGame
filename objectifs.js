@@ -251,18 +251,7 @@ function ennigme(objectif_a_accomplir,obj1){
         console.log(responsen[0][0],responsen[0][1]);
         var enigma = prompt(responsen[0][0]);
         
-<<<<<<< HEAD
-<<<<<<< HEAD
         if(enigma == String(responsen[0][1])){
-=======
-=======
-        console.log(responsen);
-        var enigma = prompt(responsen[0][0]);
->>>>>>> a
-=======
->>>>>>> un pt'it commit
-        if(enigma == responsen[0][1]){
->>>>>>> a
             if (objectif_a_accomplir.dest1=="addinv"){
                 ajouterInventaire(obj1);
             }

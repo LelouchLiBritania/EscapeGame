@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 09:27 PM
+-- Generation Time: Dec 05, 2018 at 11:59 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -42,7 +42,14 @@ CREATE TABLE `ennigmes` (
 INSERT INTO `ennigmes` (`id`, `objectif`, `message`, `reponse`) VALUES
 (1, 9, 'Le Xème jour du Yème mois de l’année 1900 + Z, un bateau ayant U hélices, V cheminées et W hommes d’équipage est lancé.\r\nSachant que le produit UVWXYZ ajouté de la racine cubique de l’âge du capitaine (qui est grand-père) est égal à 4002331, de combien d\'hommes est composé l\'équipage?', '101'),
 (3, 1301, 'Où est la mine?\r\n*- - - - -*\r\n|0 1 1 2 1|\r\n|0 1 X A X|\r\n|1 2 1 B 1|\r\n|C D E F 0|\r\n*- - - - -*\r\nLes chiffres indiquent le nombre de mines voisines, le X les mines déjà trouvées.', 'C'),
-(4, 1302, 'Où est la mine?\r\n*- - - - - -*\r\n|0 0 2 2 2 1|\r\n|1 1 2 X X A|\r\n|B X D 3 X 2|\r\n|1 1 1 1 2 E|\r\n|0 0 0 0 1 F|\r\n*- - - - - -*\r\nLes chiffres indiquent le nombre de mines voisines, le X les mines déjà trouvées.', 'F');
+(4, 1302, 'Où est la mine?\r\n*- - - - - -*\r\n|0 0 2 2 2 1|\r\n|1 1 2 X X A|\r\n|B X D 3 X 2|\r\n|1 1 1 1 2 E|\r\n|0 0 0 0 1 F|\r\n*- - - - - -*\r\nLes chiffres indiquent le nombre de mines voisines, le X les mines déjà trouvées.', 'F'),
+(5, 1303, 'Complétez la suite :\r\n1 3 5 7 11 ?', '13'),
+(6, 1304, 'Complétez la suite :\r\n1 3 -3 15 -39 ?', '121'),
+(7, 1305, 'Complétez la suite :\r\n1 2 4 6 3 5', '4'),
+(8, 1306, 'Indiquez le chemin le plus court pour relier S à F tout en passant par tous les V en évitant les X. H pour haut, B pour bas, D pour droite et G pour gauche.\r\nX X X X X F X\r\nX O         X\r\nX   X X   X X\r\nX   X   O   X\r\nX O     X   X\r\nX   X   X   X\r\nX         O X\r\nX S X X X X X', 'HDDDDHHHGGBGGHHHDDDDH'),
+(9, 1307, 'Indiquez le chemin le plus court pour relier S à F tout en passant par tous les V en évitant les X. H pour haut, B pour bas, D pour droite et G pour gauche.\r\nX X X X X F X X\r\nX 0           X\r\nX   X         X\r\nX       X X   X\r\nX       0     X\r\nX 0 X X   X   X\r\nX           0 X\r\nX S X X X X X X', 'HHHDDDBBDDHHHHGGGBGGHHDDDDH'),
+(10, 1308, 'Indiquez le chemin le plus court pour relier S à F. Mêmes contraintes.\r\nX X X X X X X X X\r\nX 0             F\r\nX       X   X   X\r\nX   X   X 0     X\r\nX 0     X X X   X\r\nX   X   X     0 X\r\nX   X   0   X   X\r\nX   0           X\r\nX S X X X X X X X', 'HDDDDDDHHGGBGGHHGGHHHDDDDBBDDHHD'),
+(11, 1309, 'Quelle ville est au milieu du segment formé par deux autres villes?', 'Lurs');
 
 -- --------------------------------------------------------
 
@@ -99,10 +106,9 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (8, '- Assemblez le GPS au centre IGN.', 9, 15, 16, 'click', 0, 10, 0, 0, 'dispcarte', '', 'Glissez dans le bon ordre les objets sur la table.'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
-(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'click', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
+(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'superposition', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
 (9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', 'Les chiffres premiers permettent des décompositions intéressantes. Voyez si on ne peut pas trouver l\'âge du capitaine facilement d\'abord.'),
-(15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', '', ''),
-(14, '- Analysez vos données GPS au centre IGN', 15, 17, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(15, '- Présentez votre projet au centre.', -1, 18, -1, 'click', 1, 10, 0, 0, '', '', ''),
 (1301, '- Faites un relevé GPS à Mane.', 1302, 1301, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1302, '- Faites un relevé GPS à Oppedette.', 1303, 1302, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1303, '- Faites un relevé GPS à Dauphin.', 1304, 1303, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
@@ -175,7 +181,8 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (1102, 'rocher2', 'images/rocher.png', 43.97966, 5.7738, '2, je regarde 5', '', 18, 1),
 (1103, 'rocher3', 'images/rocher.png', 43.97924, 5.77386, '3, je regarde 5', '', 18, 1),
 (1104, 'rocher4', 'images/rocher.png', 43.97878, 5.77481, '4, je regarde 1 et 2', '', 18, 1),
-(1105, 'rocher5', 'images/rocher.png', 43.97949, 5.77544, '5, je regarde 4', '', 18, 1);
+(1105, 'rocher5', 'images/rocher.png', 43.97949, 5.77544, '5, je regarde 4', '', 18, 1),
+(18, 'tableau', 'images/tableau.png', 43.96254, 5.7741, '', '', 17, 1);
 
 -- --------------------------------------------------------
 
@@ -208,25 +215,25 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (6, 14),
 (7, 15),
 (8, 16),
-(10, 1101),
-(12, 1301),
-(12, 1302),
-(12, 1303),
-(12, 1304),
-(12, 1305),
-(12, 1306),
-(12, 1307),
-(12, 1308),
-(12, 1309),
+(9, 1101),
+(10, 1301),
+(10, 1302),
+(10, 1303),
+(10, 1304),
+(10, 1305),
+(10, 1306),
+(10, 1307),
+(10, 1308),
+(10, 1309),
 (2, 1001),
 (2, 1002),
 (2, 1003),
 (2, 1004),
 (2, 1005),
-(10, 1102),
-(10, 1103),
-(10, 1104),
-(10, 1105),
+(9, 1102),
+(9, 1103),
+(9, 1104),
+(9, 1105),
 (1309, 17);
 
 -- --------------------------------------------------------
