@@ -1,9 +1,14 @@
+//boutton de l'inventaire
 var inventaire = document.getElementById("bouttonInventaire");
+//div contenant le boutton est les objets
 var inv = document.getElementById("Inventaire");
+//div contenant les objets de l'inventaire
 var objet = document.getElementById("Objets");
+//au début, l'inventaire est fermé
 inv.removeChild(objet);
-inventaire.addEventListener('click', valider);
 var ouvert = false;
+//EventListener permettant d'ouvrir/fermer l'inventaire
+inventaire.addEventListener('click', valider);
 
 function valider (event){
     if (ouvert){
@@ -15,14 +20,8 @@ function valider (event){
     ouvert = !ouvert;
 }
 
-function selection(obj){
-    obj.addEventListener("Click", function(event){
-        objet.style.border = "2px red solid"
-    });
-}
 
-selection(objet)
-
+//fonction d'ajout d'un objet de la carte à l'inventaire (obj est l'objet lui même)
 function ajouterInventaire (obj){
     //ajout à l'inventaire
     var newobjet = document.createElement("div");
@@ -32,7 +31,7 @@ function ajouterInventaire (obj){
     newobjet.style.height = "78px";
     newobjet.style.width = "78px";
     objet.appendChild(newobjet);//objet est ajouté dans inventaire
-    //On change le zIndex pour que les objets de l'inventaire apparaissent au dessus 
+    //On change le zIndex pour que les objets de l'inventaire apparaissent au dessus de la carte lors du drag and drop
     newobjet.style.zIndex="400000000000";
 
     //retire les marqueurs des objets si besoin
@@ -41,7 +40,7 @@ function ajouterInventaire (obj){
     obj.surCarte=false;
 
     //On ajoute la possibilité de drog & drop l'objet
-
+    //si on lache l'objet, il revient à sa place
 
     var x_souris_dep = 0;
     var y_souris_dep = 0;
@@ -79,6 +78,7 @@ function ajouterInventaire (obj){
 
 }
 
+//fonction de suppression d'un objet de l'inventaire
 function supprimerInventaire(obj){
     objet.removeChild(obj);
 }

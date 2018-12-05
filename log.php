@@ -1,4 +1,6 @@
 <?php
+//fichier d'écriture du score effectué dans la BDD
+    //Connection à la BDD
     $SERVEUR  = "localhost:3306";
     $USER     = "root";
     $PASSWORD = "";
@@ -8,6 +10,7 @@
     if(!$LINK){
         die("Connection échouée");
     }
+    
     mysqli_set_charset($LINK,"utf8");
     $score = $_POST['score'];
     $log = $_POST['loggin'];

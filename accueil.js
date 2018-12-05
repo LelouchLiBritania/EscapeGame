@@ -1,3 +1,4 @@
+//permet de remplir le tableau des scores
 var data = "demande=scores";
 var tab = document.getElementById("tab_score");
 var ajax = new XMLHttpRequest();
@@ -7,7 +8,7 @@ ajax.addEventListener('load',  function () {
     var reponse = JSON.parse(ajax.response);
     
     for (i=0;i<reponse.length;i++){
-        //On enregistre dans la div les données relatives à l'objectif
+        //On enregistre dans la ligne les données d'une personne, avec un max de 10 personnes
         var ligne=document.createElement("tr");
         tab.appendChild(ligne);
         var nom = document.createElement("td");
