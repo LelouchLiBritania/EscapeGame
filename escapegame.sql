@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 01:49 PM
+-- Generation Time: Dec 05, 2018 at 03:02 PM
 -- Server version: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -74,7 +74,7 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (3, '- Prenez la voiture au parking.', 4, 4, -1, 'click', 0, 0, 0, 0, 'tp', '', 'La voiture devrais se trouver sur le parking au sud. Une fois que vous avez cliqué dessus, cliquez sur Forcalquier dans la liste des villes pour vous y rendre.'),
 (4, '- Rejoignez le centre IGN à Forcalquier.', 5, 5, -1, 'click', 0, 0, 0, 0, 'dispcarte', '', 'Je vais vous ouvrir le portail.'),
 (5, '- Trouvez une carte mère dans Forcalquier.', 6, 6, -1, 'click', 0, 1, 0, 0, 'addinv', '', 'J\'ai entendu dire qu\'il y aurait un stand d\'électronique au marché de Forca. C\'est sur la place du Bourget.'),
-(8, '- Assemblez le GPS au centre IGN.', 801, 6, 15, 'superposition', 0, 10, 0, 0, 'dispinv', '', 'Glissez dans le bon rodre les objets sur la table.'),
+(8, '- Assemblez le GPS au centre IGN.', 801, 6, 15, 'superposition', 0, 10, 0, 0, 'dispinv', '', 'Glissez dans le bon ordre les objets sur la table.'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
 (10, '- Emmenez votre GPS aux mourres.', 11, 4, -1, 'click', 0, 2, 0, 0, 'tp', '', ''),
@@ -134,10 +134,10 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (7, 'Cliente', 'images/pnj.png', 43.95867, 5.7808, 'Le SMIC matériaux vend beaucoup d\'objets de bricolage. Vous devriez y trouver un boitier là-bas.', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?', 22, 1),
 (8, 'Boitier', 'images/boitier.png', 43.95739, 5.80007, 'Un boîtier qui servira de protection pour vos composants du GPS.', 'SIMC possède beaucoup de variété de matériaux. Mais en cherchant bien, vous devriez trouver un boîtier sans problème.', 22, 1),
 (9, 'Habitant', 'images/pnj.png', 43.95775, 5.78279, 'On raconte qu\'il est impossible de se perdre au sommet de la citadelle. Les étapes sur le chemin vous indiqueront où regarder.', 'La citadelle est le lieu de promenade favoris des habitants de la ville. Quelqu\'un vous aidera peut-être là-bas.', 20, 1),
-(10, 'etape1', 'images/vue.png', 43.95724, 5.78251, '<img src= \"images/citadelle_1.png\" />', '', 20, 1),
-(11, 'etape2', 'images/vue.png', 43.957, 5.78149, '<img src= \"images/citadelle_2.png\" />', '', 20, 1),
-(12, 'etape3', 'images/vue.png', 43.95711, 5.78187, '<img src= \"images/citadelle_3.png\" />', '', 20, 1),
-(13, 'tableorientation', 'images/tab_ori.png', 43.95704, 5.78211, '<img src= \"images/Table_orientation.png\" />', 'Il y a une table d\'orientation au sommet de la citadelle.', 22, 1),
+(10, 'etape1', 'images/vue.png', 43.95724, 5.78251, '<img src= \"images/citadelle_1.png\" style=\"width: 500px; heigth: 500px;\" />', '', 20, 1),
+(11, 'etape2', 'images/vue.png', 43.957, 5.78149, '<img src= \"images/citadelle_2.png\" style=\"width: 500px; heigth: 500px;\"/>', '', 20, 1),
+(12, 'etape3', 'images/vue.png', 43.95711, 5.78187, '<img src= \"images/citadelle_3.png\" style=\"width: 500px; heigth: 500px;\"/>', '', 20, 1),
+(13, 'tableorientation', 'images/tab_ori.png', 43.95704, 5.78211, '<img src= \"images/Table_orientation.png\" style=\"width: 500px; heigth: 500px;\"/>', 'Il y a une table d\'orientation au sommet de la citadelle.', 22, 1),
 (14, 'antenne', 'images/antenne.png', 44.04676, 5.77593, 'Une antenne pour capter les ondes des satellites. Très utile pour un GPS.', 'La gendarmerie de St-Etienne-les-Orgues pourrait effectivement posséder une antenne, vu la proximité avec le sommêt de Lure.', 22, 3),
 (15, 'Table', 'images/table.png', 43.96261, 5.77402, 'Une table de travail pour assembler vos composants.', '', 21, 1),
 (16, 'GPS', 'images/GPS.png', 43.96263, 5.77408, 'Votre GPS low-cost est enfin assemblé, il reste plus qu\'a programmer la carte de comande.', '', 21, 1),
@@ -146,7 +146,16 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 (1002, 'bouteille2', 'images/bouteille.png', 44.1236, 5.7912, 'Une autre bouteille!', '', 20, 3),
 (1003, 'bouteille3', 'images/bouteille.png', 44.03838, 5.62858, 'Une autre bouteille!', '', 21, 5),
 (1004, 'bouteille4', 'images/bouteille.png', 43.93383, 5.58578, 'Une autre bouteille!', '', 22, 6),
-(17, 'demineur', 'images/demineur.png', 43.97968, 5.77392, '- Il va falloir trouver où placer le GPS pour capter au mieux les satellites.', '', 18, 1);
+(17, 'demineur', 'images/demineur.png', 43.97968, 5.77392, '- Il va falloir trouver où placer le GPS pour capter au mieux les satellites.', '', 18, 1),
+(1305, 'gps_lurs', 'images/GPS.png', 43.97109, 5.88961, '', '', 21, 9),
+(1308, 'gps_oraison', 'images/GPS.png', 43.9294, 5.9086, '', '', 20, 10),
+(1301, 'gps_mane', 'images/GPS.png', 43.93796, 5.76837, '', '', 21, 8),
+(1302, 'gps_oppedette', 'images/GPS.png', 43.93318, 5.58733, '', '', 22, 6),
+(1303, 'gps_dauphin', 'images/GPS.png', 43.89788, 5.78912, '', '', 20, 7),
+(1304, 'gps_banon', 'images/GPS.png', 44.03292, 5.63253, '', '', 20, 5),
+(1306, 'gps_ongle', 'images/GPS.png', 44.02844, 5.73178, '', '', 21, 4),
+(1307, 'gps_fontienne', 'images/GPS.png', 44.0099, 5.79074, '', '', 21, 2),
+(1309, 'gps_mees', 'images/GPS.png', 44.02983, 5.98089, '', '', 21, 11);
 
 -- --------------------------------------------------------
 
@@ -178,8 +187,24 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (6, 13),
 (6, 14),
 (7, 15),
-(8, 16),
-(10, 17);
+(803, 16),
+(10, 17),
+(12, 1301),
+(12, 1301),
+(12, 1302),
+(12, 1303),
+(12, 1304),
+(12, 1305),
+(12, 1306),
+(12, 1307),
+(12, 1308),
+(12, 1309),
+(2, 1001),
+(2, 1001),
+(2, 1002),
+(2, 1003),
+(2, 1004),
+(2, 1005);
 
 -- --------------------------------------------------------
 

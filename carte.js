@@ -32,19 +32,11 @@ var markerd2 = L.marker([44.00848,5.7936], {icon: iconcle});
 
 var markerd3 = L.marker([44.00848, 5.79357], {icon: iconporte_ouverte})
 
-window.setInterval(devoile,100);
-function devoile(event){
-    //fonction permettant de dévoiler un marker à un certain zoom
-    //b est le booleen indiquant si on est bien dans la phase où le marqueur est sensé s'afficher
-    //m est le marqueur à dévoiler
-    //z est le zoom minimum pour dévoiler le markeu
-    if (mymap.getZoom() == 22 && d2){
-        markerd2.addTo(mymap);}
-    else{
-        markerd2.remove(mymap);
-    }
+function devoile(objet){
+    marker = objet.
+    
+    
 }
- 
 
 
 function afficher(id){
@@ -71,6 +63,13 @@ function afficher(id){
             new_objet.name=reponse[i][0];
             new_objet.ville= document.getElementById("ville"+reponse[i][5]);
             var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet});
+            mymap.addEventListener("zoom", function(){
+                if (mymap.getZoom() == 22 && d2){
+                    markerObjet.addTo(mymap);}
+                else{
+                    markerObjet.remove(mymap);
+                }
+            }) 
             new_objet.ville.couche.addLayer(markerObjet);
             
             new_objet.marker=markerObjet;
