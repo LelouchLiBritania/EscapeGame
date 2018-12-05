@@ -57,9 +57,6 @@ help.innerHTML="Moi c'est pageot";
 pageot.addEventListener('click', function(){
             
     var ancien = help.innerHTML;
-    console.log(ancien);
-    console.log(indice);
-    console.log(indice!=ancien);
     setTimeout(function(){
         if(indice!=ancien){
             help.innerHTML=indice;
