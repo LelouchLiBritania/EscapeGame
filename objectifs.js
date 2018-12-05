@@ -234,24 +234,45 @@ function creer_evenement(evt,obj1,obj2,objectif_a_accomplir){
     }
     if(evt=="validation"){
         obj1.marker.addEventListener("click",function fonctionClick(event){
+<<<<<<< HEAD
             var en = ennigme(objectif_a_accomplir,obj1);
             
+=======
+            var en = ennigme(objectif_a_accomplir, obj1);
+            console.log(en);
+           
+>>>>>>> a
             
         })
     }
 }
 
+<<<<<<< HEAD
 function ennigme(objectif_a_accomplir,obj1){
     var dataen = "id="+objectif_a_accomplir.id_bdd+"&demande=ennigme";
+=======
+function ennigme(objectif_a_accomplir, obj1){
+    var id = objectif_a_accomplir.id;
+    var dataen = "id="+id+"&demande=ennigme";
+>>>>>>> a
     var ajaxen = new XMLHttpRequest();
     ajaxen.open('POST', 'connectionBdd.php');
     ajaxen.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajaxen.addEventListener('load',  function () {
         var responsen = JSON.parse(ajaxen.response);
+<<<<<<< HEAD
         console.log(responsen[0][0],responsen[0][1]);
         var enigma = prompt(responsen[0][0]);
         
+<<<<<<< HEAD
         if(enigma == String(responsen[0][1])){
+=======
+=======
+        console.log(responsen);
+        var enigma = prompt(responsen[0][0]);
+>>>>>>> a
+        if(enigma == responsen[0][1]){
+>>>>>>> a
             if (objectif_a_accomplir.dest1=="addinv"){
                 ajouterInventaire(obj1);
             }
@@ -263,7 +284,10 @@ function ennigme(objectif_a_accomplir,obj1){
             }
             
             valider_objectif(objectif_a_accomplir);
+<<<<<<< HEAD
             
+=======
+>>>>>>> a
         }
         
         
