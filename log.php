@@ -11,7 +11,7 @@
     mysqli_set_charset($LINK,"utf8");
     $score = $_POST['score'];
     $log = $_POST['loggin'];
-    $requete = "SELECT * FROM loggin WHERE Log LIKE ".$log;
+    $requete = "SELECT * FROM loggin WHERE Log LIKE '".$log."'";
     $objet=[];
         if ($result = mysqli_query($LINK, $requete)) {
             while ($ligne = mysqli_fetch_row($result)) {
@@ -20,7 +20,7 @@
         }
 
         if (sizeof($objet)==0){
-            $requete="INSERT INTO loggin VALUES (".$log.",".$score.")";
+            $requete="INSERT INTO loggin VALUES ('".$log."',".$score.")";
             mysqli_query($LINK, $requete);
         }
         else{

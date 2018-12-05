@@ -53,13 +53,17 @@ function afficher(id){
             new_objet.ville= document.getElementById("ville"+reponse[i][5]);
             new_objet.affiche = true;
             new_objet.zoom_affichage=reponse[i][6];
+            new_objet.surCarte = true;
             var markerObjet = L.marker([reponse[i][2],reponse[i][3]], {icon: iconObjet});
-            mymap.addEventListener("zoom", function(){
-                if(new_objet.affiche && mymap.getZoom() < new_objet.zoom_affichage){
+            new_objet.ville.couche.addLayer(markerObjet);
+            new_objet.marker=markerObjet;
+            console.log(new_objet.marker);
+            mymap.addEventListener("zoom", function (){
+                if(new_objet.affiche && mymap.getZoom() < new_objet.zoom_affichage&&new_objet.surCarte){
                     new_objet.marker.remove(new_objet.ville.couche);
                     new_objet.affiche=!new_objet.affiche;
                 }
-                if(!new_objet.affiche && mymap.getZoom() >= new_objet.zoom_affichage){
+                if(!new_objet.affiche && mymap.getZoom() >= new_objet.zoom_affichage&&new_objet.surCarte){
                     new_objet.ville.couche.addLayer(markerObjet);
                     new_objet.affiche=!new_objet.affiche;
                 }
@@ -67,9 +71,7 @@ function afficher(id){
                 
                    
             }) 
-            new_objet.ville.couche.addLayer(markerObjet);
             
-            new_objet.marker=markerObjet;
             
             new_objet.descriptif = reponse[i][4];
 
@@ -86,5 +88,7 @@ function afficher(id){
 function supprimerCarte(obj){
     obj.ville.couche.removeLayer(marker);
     obj.marker.remove(mymap);
+    obj.surCarte=false;
+    
 }
 

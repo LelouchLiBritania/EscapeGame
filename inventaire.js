@@ -38,6 +38,7 @@ function ajouterInventaire (obj){
     //retire les marqueurs des objets si besoin
     obj.ville.couche.removeLayer(marker);
     obj.marker.remove(mymap);
+    obj.surCarte=false;
 
     //On ajoute la possibilité de drog & drop l'objet
 
