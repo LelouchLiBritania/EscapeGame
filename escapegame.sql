@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  jeu. 06 déc. 2018 à 00:10
--- Version du serveur :  5.7.17
--- Version de PHP :  5.6.30
+-- Host: 127.0.0.1
+-- Generation Time: Dec 06, 2018 at 01:01 AM
+-- Server version: 5.7.17
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `escapegame`
+-- Database: `escapegame`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ennigmes`
+-- Table structure for table `ennigmes`
 --
 
 CREATE TABLE `ennigmes` (
@@ -36,7 +36,7 @@ CREATE TABLE `ennigmes` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `ennigmes`
+-- Dumping data for table `ennigmes`
 --
 
 INSERT INTO `ennigmes` (`id`, `objectif`, `message`, `reponse`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `ennigmes` (`id`, `objectif`, `message`, `reponse`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `loggin`
+-- Table structure for table `loggin`
 --
 
 CREATE TABLE `loggin` (
@@ -63,18 +63,19 @@ CREATE TABLE `loggin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `loggin`
+-- Dumping data for table `loggin`
 --
 
 INSERT INTO `loggin` (`Log`, `Best`) VALUES
 ('Le champion', 15),
 ('Marie', 17),
-('Zacharie', 14);
+('Zacharie', 14),
+('maxime', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `objectif`
+-- Table structure for table `objectif`
 --
 
 CREATE TABLE `objectif` (
@@ -94,7 +95,7 @@ CREATE TABLE `objectif` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `objectif`
+-- Dumping data for table `objectif`
 --
 
 INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`, `evenement_de_reussite`, `victoire`, `gain`, `debut`, `bonus`, `destobj1`, `destobj2`, `indice`) VALUES
@@ -106,17 +107,16 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 (8, '- Assemblez le GPS au centre IGN.', 9, 15, 16, 'click', 0, 10, 0, 0, 'dispcarte', '', 'Glissez dans le bon ordre les objets sur la table.'),
 (6, '- Trouvez un boîtier pour votre GPS.', 7, 8, 7, 'click', 0, 2, 0, 0, 'addinv', 'dispcarte', 'Le glacier saint-michel attire beaucoup de monde. Peut-être que vous y croiserez quelqu\'un qui peut vous aider?'),
 (7, '- Trouvez une antenne pour votre GPS.', 8, 14, 9, 'click', 0, 5, 0, 0, 'addinv', 'dispcarte', 'Regardez bien les images, un indice doit être caché de chacune d\'elle.'),
-(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'click', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
+(10, '- Faites une acquisition aux mourres', 1301, 16, 1103, 'superposition', 0, 5, 0, 0, '', '', 'Un des rochers doit être plus adapté pour réaliser nos mesures.'),
 (9, '- Programmez votre carte mère.', 10, 16, -1, 'validation', 0, 10, 0, 0, 'addinv', '', 'Les chiffres premiers permettent des décompositions intéressantes. Voyez si on ne peut pas trouver l\'âge du capitaine facilement d\'abord.'),
-(15, '- Présentez votre projet au centre.', -1, -1, -1, 'validation', 1, 10, 0, 0, '', '', ''),
-(14, '- Analysez vos données GPS au centre IGN', 15, 17, -1, 'validation', 0, 10, 0, 0, '', '', ''),
+(15, '- Présentez votre projet au centre.', -1, 18, -1, 'click', 1, 10, 0, 0, '', '', ''),
 (1301, '- Faites un relevé GPS à Mane.', 1302, 1301, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1302, '- Faites un relevé GPS à Oppedette.', 1303, 1302, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1303, '- Faites un relevé GPS à Dauphin.', 1304, 1303, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1304, '- Faites un relevé GPS à Banon.', 1305, 1304, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1305, '- Faites un relevé GPS à Lurs.', 1306, 1305, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1306, '- Faites un relevé GPS à Ongle.', 1307, 1306, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
-(1309, '- Faites un relevé GPS aux Mées.', 14, 1309, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
+(1309, '- Faites un relevé GPS aux Mées.', 15, 1309, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1308, '- Faites un relevé GPS à Oraison.', 1309, 1308, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1307, '- Faites un relevé GPS à Fontienne.', 1308, 1307, -1, 'validation', 0, 10, 0, 0, 'dispcarte', '', ''),
 (1001, '', 0, 1001, -1, 'click', 0, 3, 0, 1, 'addinv', '', ''),
@@ -128,7 +128,7 @@ INSERT INTO `objectif` (`id`, `intitule`, `objectif_suivant`, `objet1`, `objet2`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `objet`
+-- Table structure for table `objet`
 --
 
 CREATE TABLE `objet` (
@@ -144,7 +144,7 @@ CREATE TABLE `objet` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `objet`
+-- Dumping data for table `objet`
 --
 
 INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`, `zoom_affichage`, `Ville`) VALUES
@@ -188,7 +188,7 @@ INSERT INTO `objet` (`id`, `name`, `image`, `lat`, `lon`, `descriptif`, `indice`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `objet_a_debloquer`
+-- Table structure for table `objet_a_debloquer`
 --
 
 CREATE TABLE `objet_a_debloquer` (
@@ -197,7 +197,7 @@ CREATE TABLE `objet_a_debloquer` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `objet_a_debloquer`
+-- Dumping data for table `objet_a_debloquer`
 --
 
 INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
@@ -226,6 +226,7 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 (10, 1307),
 (10, 1308),
 (10, 1309),
+(1309, 18),
 (2, 1001),
 (2, 1002),
 (2, 1003),
@@ -240,7 +241,7 @@ INSERT INTO `objet_a_debloquer` (`id_objectif`, `id_objet`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `trajet`
+-- Table structure for table `trajet`
 --
 
 CREATE TABLE `trajet` (
@@ -259,7 +260,7 @@ CREATE TABLE `trajet` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `trajet`
+-- Dumping data for table `trajet`
 --
 
 INSERT INTO `trajet` (`Ville`, `Forcalquier`, `Fontienne`, `St-Etienne-les-Orgues`, `Ongle`, `Banon`, `Oppedette`, `Dauphin`, `Mane`, `Lurs`, `Oraison`, `Les_Mees`) VALUES
@@ -278,7 +279,7 @@ INSERT INTO `trajet` (`Ville`, `Forcalquier`, `Fontienne`, `St-Etienne-les-Orgue
 -- --------------------------------------------------------
 
 --
--- Structure de la table `villes`
+-- Table structure for table `villes`
 --
 
 CREATE TABLE `villes` (
@@ -290,7 +291,7 @@ CREATE TABLE `villes` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `villes`
+-- Dumping data for table `villes`
 --
 
 INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
@@ -307,41 +308,41 @@ INSERT INTO `villes` (`id`, `Name`, `lat`, `lon`, `Image`) VALUES
 (11, 'Les Mées', 44.0295, 5.97592, 'images/Mees.png');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `ennigmes`
+-- Indexes for table `ennigmes`
 --
 ALTER TABLE `ennigmes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `loggin`
+-- Indexes for table `loggin`
 --
 ALTER TABLE `loggin`
   ADD PRIMARY KEY (`Log`);
 
 --
--- Index pour la table `objectif`
+-- Indexes for table `objectif`
 --
 ALTER TABLE `objectif`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `objet`
+-- Indexes for table `objet`
 --
 ALTER TABLE `objet`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `trajet`
+-- Indexes for table `trajet`
 --
 ALTER TABLE `trajet`
   ADD PRIMARY KEY (`Ville`);
 
 --
--- Index pour la table `villes`
+-- Indexes for table `villes`
 --
 ALTER TABLE `villes`
   ADD PRIMARY KEY (`id`);
